@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap 4 project documentation theme for developers</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+      
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                            <span class="text-highlight">CNC</span><span class="text-bold">Cheet Sheet</span>
+                        </a>
+                    </h1>
+                    
+                </div><!--//branding-->
+                
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Kubernetes</li>
+                </ol>
+                
+                <div class="top-search-box">
+	                 <form class="form-inline search-form justify-content-center" action="" method="get">
+	            
+			            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+			            
+			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+			            
+			        </form>
+                </div>
+                
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><img  alt="kubernetes-icon" src="kbn.png"/></i> Kubernetes Quick Start</h1>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="download-section" class="doc-section">
+                                <h2 class="section-title">Installation & Setup</h2>
+                                <div class="section-block">
+                                    <p>
+                                        When working with a tool like kubernetes its is very important to make a good friendship with its <b>documentation</b> <a href="https://kubernetes.io/docs/home/">link</a> <br>
+                                        to setup kubernetes we will need two main components
+                                        <ul>
+                                            <li>kubectl</li>
+                                            <li>minikube</li>
+                                            <li>virtual box(optional)</li>
+                                        </ul>
+                                        if you have any problem or error during the setup you can refer to google..... 
+                                    </p>
+                                    <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux" class="btn btn-green" target="_blank"><i class="fas fa-download"></i> Setup guide for kubernetes</a>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="installation-section" class="doc-section">
+                                <h2 class="section-title">Installation</h2>
+                                <div id="step1"  class="section-block">
+                                    <h3 class="block-title">Step One</h3>
+                                    <p>
+                                        First we need to install kubectl through which we will manage kubernetes.<br>
+                                        if you are using linux just copy and paste these commands one by one.
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2</code></p>
+                                        <p><code>curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -</code></p>
+                                        <p><code>echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list</code></p>
+                                        <p><code>sudo apt-get update</code></p>
+                                        <p><code>sudo apt-get install -y kubectl</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="step2"  class="section-block">
+                                    <h3 class="block-title">Step Two</h3>
+                                    <p>
+                                        Now  we will install minikube, when using minikube 8Gb RAM is recommended.<br>
+                                        if you are using linux then just copy and paste these commands one by one.
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64</code></p>
+                                        <p><code>chmod +x minikube</code></p>
+                                        <p><code>sudo mkdir -p /usr/local/bin/</code></p>
+                                        <p><code>sudo install minikube /usr/local/bin/</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="step3"  class="section-block">
+                                    <h3 class="block-title">Step Three</h3>
+                                    <p>
+                                        In this step we will install virtual box which is <b>optional</b>, if you want to use virtual box then make sure your machine supports virtualization <br>
+                                        To check that your system supports virtualization or not run the command below <br>
+                                        <p><code>grep -E --color 'vmx|svm' /proc/cpuinfo</code></p>
+                                        if this command returns some output then you are good to go else continue without install virtual box.
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>sudo apt-get update</code></p>
+                                        <p><code>sudo apt-get upgrade</code></p>
+                                        <p><code>wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</code></p>
+                                        <p><code>wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -</code></p>
+                                        <p><code>sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian xenial contrib"</code></p>
+                                        <p><code>sudo apt-get update</code></p>
+                                        <p><code>sudo apt-get install virtualbox</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="step4"  class="section-block">
+                                    <h3 class="block-title">Step Four</h3>
+                                    <p>
+                                        Lets check that we installed all 3 or 2 main tools correctly or not.<br>
+                                        Run the commands that is based on your criteria. <br>
+                                        if one fails because of any error use the command below and then try next command.
+                                        <p><code>minikube delete</code></p>
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>minikube start</code></p>
+                                        <p>above command will start minikube using virtual box</p>
+                                        <p><code>minikube start --driver=none</code></p>
+                                        <p>if you have not installed virtual box then use the above command, if it also not works the try the below command.</p>
+                                        <p><code>minikube start --driver=docker</code></p>
+                                        <p>above command will start minikube using docker</p>
+                                        <p>
+                                            If none of the above command worked for you then try adding <b>--force</b> flag to command <br>
+                                            example : <p><code>minikube start --driver=docker --force</code></p>
+                                        </p>
+                                    </div><!--//code-block-->
+                                    <h3>If minikube Starts</h3>
+                                    <p>If minikube starts then you can type the below command to get its status</p>
+                                    <p><code>minikube status</code></p>
+                                    <p>
+                                        this command will return result similler to <br>
+                                        host: Running
+                                        kubelet: Running
+                                        apiserver: Running
+                                    </p>
+                                    <p>Now its all set to us kubernetes :-)</p>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            
+                            <section id="code-section" class="doc-section">
+                                <h2 class="section-title">Pod</h2>
+                                <div class="section-block">
+                                    <p>
+                                        it is a resource of kuberbetes that isolates container or group of containers, every pod has its own ip address and each container in it has different port number.
+                                    </p>
+                                    
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Pod basic template</h6>
+                                        <pre><code class="language-markup">
+kind: Pod
+apiVersion: v1
+metadata:
+name: &lt;pod-name>
+spec:
+containers:
+- name: &lt;container-name>
+image: &lt;image>
+ports:
+- containerPort: 80                                        </code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Simple pod using command line</h6>
+                                        <pre><code class="language-git">kubectl run &lt;name of pod> --image=&lt;name of the image from registry></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Port forward pod</h6>
+                                        <pre><code class="language-git">kubectl port-forward &lt;pod-name> &lt;desired-port>:&lt;pod-exposed-port></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h6>List pods</h6>
+                                        <pre><code class="language-git">
+kubectl get pods --show-labels                                      // display all pods with their labels
+kubectl get pods -L &lt;label key>                                    // display pods with the spicfied label key as heading
+kubectl get pods -l &lt;label key>=&lt;value>                           // display pods with the spicfied label key & value
+kubectl get pods -l '&lt;label key>in&lt;(val1,val2)>' --show-labels    // display pods with the spicfied label key & value could be either of them
+                                        </code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="callouts-section" class="doc-section">
+                                <h2 class="section-title">Others</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
+                                    </p>
+                                </div>
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Labels</h4>
+                                        <p>
+                                            labels are key:value pair that help us to group different resources, we can perform different opperations on those resources using labels.<br>
+                                            labels are defined under metadata of a resource. There can be one or more labels of a resource.<br>
+                                            e.g type: frontend
+                                        </p>
+                                        <h6>Add label to running resource</h6>
+                                        <pre><code class="language-git">kubectl label &lt;resource-type> &lt;resource-name> &lt;key>=&lt;value></code></pre>
+                                        <h6>Remove label from a resource</h6>
+                                        <pre><code class="language-git">kubectl label &lt;resource-type> &lt;resource-name> &lt;key>-</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Annotations</h4>
+                                        <p>
+                                            Annotations are also key:value pair but it is used to give a describe a resource or give any information about the resource.<br>
+                                            annotations are also defined under metadata of a resource. There can be one or more labels of a resource.<br>
+                                            e.g purpose: "this resource can do _____ work"
+                                        </p>
+                                        <h6>Add annotation to running resource</h6>
+                                        <pre><code class="language-git">kubectl annotate &lt;resource-type> &lt;resource-name> &lt;key>="&lt;value>"</code></pre>
+                                        <h6>Remove annotation from a resource</h6>
+                                        <pre><code class="language-git">kubectl annotate &lt;resource-type> &lt;resource-name> &lt;key>-</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+	                        
+	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+	                                <a class="nav-link scrollto" href="#download-section">Download</a>
+	                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#step1">Step One</a>
+                                        <a class="nav-link scrollto" href="#step2">Step Two</a>
+                                        <a class="nav-link scrollto" href="#step3">Step Three</a>
+                                    </nav><!--//nav-->
+	                                <a class="nav-link scrollto" href="#code-section">Code</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#html">HTML</a>
+                                        <a class="nav-link scrollto" href="#css">CSS</a>
+                                        <a class="nav-link scrollto" href="#sass">Sass</a>
+                                        <a class="nav-link scrollto" href="#less">LESS</a>
+                                        <a class="nav-link scrollto" href="#javascript">JavaScript</a>
+                                        <a class="nav-link scrollto" href="#python">Python</a>
+                                        <a class="nav-link scrollto" href="#php">PHP</a>
+                                        <a class="nav-link scrollto" href="#handlebars">Handlebars</a>
+                                    </nav><!--//nav-->
+	                                <a class="nav-link scrollto" href="#callouts-section">Callouts</a>
+	                                <a class="nav-link scrollto" href="#tables-section">Tables</a>
+	                                <a class="nav-link scrollto" href="#buttons-section">Buttons</a>
+	                                <a class="nav-link scrollto" href="#video-section">Video</a>
+	                                <a class="nav-link scrollto" href="#icons-section">Icons</a>
+	                            </nav><!--//doc-menu-->
+	                        
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper--> 
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://github.com/umer2001" target="_blank">Umer Farooq</a> for developers</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+</body>
+</html> 
+

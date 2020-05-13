@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap 4 project documentation theme for developers</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+      
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-pink">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                            <span class="text-highlight">CNC</span><span class="text-bold">Cheet Sheet</span>
+                        </a>
+                    </h1>
+                    
+                </div><!--//branding-->
+                
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Linux</li>
+                </ol>
+                
+                <div class="top-search-box">
+	                 <form class="form-inline search-form justify-content-center" action="" method="get">
+	            
+			            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+			            
+			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+			            
+			        </form>
+                </div>
+                
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fab fa-ubuntu"></i> Linux Quick Start</h1>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="download-section" class="doc-section">
+                                <h2 class="section-title">Download</h2>
+                                <div class="section-block">
+                                    <p>You can click on the button bellow to download latest version of ubuntu</p>
+                                    <a href="https://ubuntu.com/download/desktop" class="btn btn-pink" target="_blank"><i class="fas fa-download"></i> Download ubuntu iso</a>
+                                    <h3>Requirements</h3>
+                                    <ul>
+                                        <li>Usb with minimum 4Gb space</li>
+                                        <li>Minimum 20Gb free space in your hard disk.</li>
+                                        <li>Ubunti iso file</li>
+                                        <li>Rufus tool download <a href="https://github.com/pbatard/rufus/releases/download/v3.9/rufus-3.9.exe" class="">here</a></li>
+                                    </ul>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="installation-section" class="doc-section">
+                                <h2 class="section-title">Installation</h2>
+                                <div id="step1"  class="section-block">
+                                    <h3 class="block-title">Make usb bootable using rufus</h3>
+                                    <p>follow the instructions to make usb bootable.</p>
+                                    <ol>
+                                        <li>Insert usb in computer.</li>
+                                        <li>Formet the usb.</li>
+                                        <li>Open rufus<ul>
+                                            <li>select your usb drive</li>
+                                            <li>select ubuntu iso file</li>
+                                            <li>click start</li>
+                                            <li>you will get some prompts just click ok.</li>
+                                        </ul></li>
+                                    </ol>
+                                </div><!--//section-block-->
+                                <div id="step2"  class="section-block">
+                                    <h3 class="block-title">Shrink drive</h3>
+                                    <p>shrink a drive or partision</p>
+                                    <ol>
+                                        <li>Open disk manegement tool.</li>
+                                        <li>Shrink a drive or partision.</li>
+                                        <li>Make sure you get atleast 20Gb of space after shrinking.</li>
+                                    </ol>
+                                </div><!--//section-block-->
+                                <div id="step3"  class="section-block">
+                                    <h3 class="block-title">Reboot</h3>
+                                    <p>Shut down your computer if its on and then follow the steps below </p>
+                                    <ol>
+                                        <li>Insert usb.</li>
+                                        <li>Boot computer from usb.</li>
+                                        <li>Select the install option.</li>
+                                        <li>Now do some basic settings till <b>installation type</b> menu.</li>
+                                        <li>Click something else.</li>
+                                        <li>Configure your partitions.</li>
+                                        <li>Click install.</li>
+                                        <li>Set username and password</li>
+                                        <li>ubuntu installed :-)</li>
+                                    </ol>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            
+                            <section id="System-commands" class="doc-section">
+                                <h2 class="section-title">System commands</h2>
+                                <div class="section-block">
+                                    <p>
+                                        <a href="https://prismjs.com/" target="_blank">PrismJS</a> is used as the syntax highlighter here. You can <a href="https://prismjs.com/download.html" target="_blank">build your own version</a> via their website should you need to.
+                                    </p>
+                                    
+                                </div><!--//section-block-->
+                                <div id="System-info" class="section-block">
+                                    <div class="code-block">
+                                        <h4>System info</h4>
+                                        <p>dsplay the OS name , release and version</p>
+                                        <pre><code class="language-git">uname -srv</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="CPU-info" class="section-block">
+                                    <div class="code-block">
+                                        <h4>CPU info</h4>
+                                        <pre><code class="language-git">lscpu</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="System-on-time" class="section-block">
+                                    <div class="code-block">
+                                        <h4>System on time</h4>
+                                        <pre><code class="language-git">uptime</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Clear-screen" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Clear screen</h4>
+                                        <pre><code class="language-git">clear</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="System-to-su" class="section-block">
+                                    <div class="code-block">
+                                        <h4>System to super-user</h4>
+                                        <pre><code class="language-git">su -</code></pre>
+                                        <p>It might ask you for root password, so enter it and hit enter.</p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Check-free-memory" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Check free memory</h4>
+                                        <pre><code class="language-git">free</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Running-processes-list" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Running processes list</h4>
+                                        <pre><code class="language-git">ps</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="list-process" class="section-block">
+                                    <div class="code-block">
+                                        <h4>list process</h4>
+                                        <pre><code class="language-git">top</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Kill-process" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Kill process</h4>
+                                        <pre><code class="language-git">kill</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Display-date" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Display date</h4>
+                                        <pre><code class="language-git">date</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Display-calender" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Display calender</h4>
+                                        <pre><code class="language-git">cal</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Shut-down-OS" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Shut down OS</h4>
+                                        <pre><code class="language-git">shutdown</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="File-system-&-navigation" class="doc-section">
+                                <h2 class="section-title">File system & navigation</h2>
+                                <div class="section-block">
+                                    <p>Here is file system of linux and its basic navigation techniques.</p>
+                                </div><!--//section-block-->
+                                <h4 id="File-system" >File system</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Directory</th>
+                                                    <th>Purpose</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>/</td>
+                                                    <td class="tw">main Directory (base)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/bin</td>
+                                                    <td class="tw">Executable files eg. linux cammands cat,man,ls</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/boot</td>
+                                                    <td class="tw">files to help system boot including kernal.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/dev</td>
+                                                    <td class="tw">contain files for different hardware and devices.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/etc</td>
+                                                    <td class="tw">contains initialization scripts and system configuration files.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/home</td>
+                                                    <td class="tw">contains user directories.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/lib</td>
+                                                    <td class="tw">contains library files including driver modules.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/lost+found</td>
+                                                    <td class="tw">for lost files.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/media</td>
+                                                    <td class="tw">mounting removal medis file system.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/mnt</td>
+                                                    <td class="tw">temp directory for mounted file systems.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/opt</td>
+                                                    <td class="tw">used for storing application packages.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/proc</td>
+                                                    <td class="tw">has info about linux processes.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/root</td>
+                                                    <td class="tw">Root users home diresyory.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/sbin</td>
+                                                    <td class="tw">Executable files for commands used by root user.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/srv</td>
+                                                    <td class="tw">Used for services hosted by system eg. web,ftp,etc.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/temp</td>
+                                                    <td class="tw">temporary directory- deleted during boot.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/usr</td>
+                                                    <td class="tw">contains sub-directories for program files.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>/var</td>
+                                                    <td class="tw">contains log files.</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div><!--//table-responsive-->
+                                <div id="Root-home-dir" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Switch to root users home directory</h4>
+                                        <pre><code class="language-git">cd /</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Current-path" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Switch to users home directory</h4>
+                                        <pre><code class="language-git">cd ~</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Current-path" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Display current directory path</h4>
+                                        <pre><code class="language-git">pwd</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="One-dir-up" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Go one directory up</h4>
+                                        <p>example: if you are in /root/&lt;first folder>/&lt;second folder>/   after this command you will be in /root/&lt;first folder>/ </p>
+                                        <pre><code class="language-git">cd ../</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="List-content" class="section-block">
+                                    <div class="code-block">
+                                        <h4>List content</h4>
+                                        <p>it will display all content of the current directory.</p>
+                                        <pre><code class="language-git">ls</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Working-with-files" class="doc-section">
+                                <h2 class="section-title">Working with files</h2>
+                                <div class="section-block">
+                                    <p>these commands will help us to create,delete,edit,view& rename files.</p>
+                                </div><!--//section-block-->
+                                <div id="Create-file" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Create file</h4>
+                                        <pre><code class="language-git">touch &lt;file-name></code></pre>
+                                        <p>you can create more then one file at a time by typing</p>
+                                        <pre><code class="language-git">touch &lt;firsst-file-name> &lt;second-file-name> &lt;third-file-name></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Delete-file" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Delete file </h4>
+                                        <pre><code class="language-git">rm &lt;file-name></code></pre>
+                                        <p>you can delete more then one file at a time by typing</p>
+                                        <pre><code class="language-git">rm &lt;firsst-file-name> &lt;second-file-name> &lt;third-file-name></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Edit-file" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Edit file</h4>
+                                        <pre><code class="language-git">nano &lt;file-name></code></pre>
+                                        <p>
+                                            after this command nono editor will be opened in your terminl and you can write what ever you want.<br>
+                                            If you want to go out of nano editor, follow the steps below
+                                            <ol>
+                                                <li>press ctrl + x</li>
+                                                <li>if you want to save change hit y otherwisw n</li>
+                                                <li>if you want to save will with same name hit enter.</li>
+                                            </ol>
+                                        </p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="View-file" class="section-block">
+                                    <div class="code-block">
+                                        <h4>View file</h4>
+                                        <pre><code class="language-git">cat &lt;file-name></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Rename-file" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Rename file</h4>
+                                        <pre><code class="language-git">mv &lt;old-file-name> &lt;new-file-name></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Permissions" class="doc-section">
+                                <h2 class="section-title">Permissions</h2>
+                                <div class="section-block">
+                                    <p>Here we will see to change permissions of files.</p>
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Change permission of a file</h4>
+                                        <pre><code class="language-git">chmod 777 &lt;file-name or path></code></pre>
+                                        <p>
+                                            In aove cammand 777 can be described as <br>
+                                            <ul>
+                                                <li>first  7 is for permission for owner</li>
+                                                <li>second 7 is for current group user</li>
+                                                <li>third  7 is for other users</li>
+                                            </ul>
+                                            & 7 here is the type of permissions to give, types of permissions with their numbric value is listed below <br>
+                                            <ul>
+                                                <li>0 = no permission</li>
+                                                <li>1 = execute</li>
+                                                <li>2 = write</li>
+                                                <li>3 = write and execute</li>
+                                                <li>4 = read</li>
+                                                <li>5 = read and execute</li>
+                                                <li>6 = read and write</li>
+                                                <li>7 = read, write, and execute</li>
+                                            </ul>
+                                        </p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Other-cammands" class="doc-section">
+                                <h2 class="section-title">Other cammands</h2>
+                                <div class="section-block">
+                                    <p>Here we will see some more important commands.</p>
+                                </div><!--//section-block-->
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>cammand</th>
+                                                <th>Purpose</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>hostname</td>
+                                                <td class="tw">display system host name</td>
+                                            </tr>
+                                            <tr>
+                                                <td>hostname -i</td>
+                                                <td class="tw">display ip address of host</td>
+                                            </tr>
+                                            <tr>
+                                                <td>find /path/to/search -name "file or folder name"</td>
+                                                <td class="tw">used to search a file or folder in a specfic location</td>
+                                            </tr>
+                                            <tr>
+                                                <td>df -h</td>
+                                                <td class="tw">display a disk space usage</td>
+                                            </tr>
+                                            <tr>
+                                                <td>du &lt;path></td>
+                                                <td class="tw">display all files in a specific directory and their size</td>
+                                            </tr>
+                                            <tr>
+                                                <td>du -s &lt;path></td>
+                                                <td class="tw">display size of specified directory</td>
+                                            </tr>
+                                            <tr>
+                                                <td>w</td>
+                                                <td class="tw">display users that are online</td>
+                                            </tr>
+                                            <tr>
+                                                <td>apt-cache search</td>
+                                                <td class="tw">display list of all packages</td>
+                                            </tr>
+                                            <tr>
+                                                <td>info &lt;command></td>
+                                                <td class="tw">online information about a command</td>
+                                            </tr>
+                                            <tr>
+                                                <td>whatis &lt;command></td>
+                                                <td class="tw">short description of the command</td>
+                                            </tr>
+                                            <tr>
+                                                <td>type &lt;command></td>
+                                                <td class="tw">show tle location of command file</td>
+                                            </tr>
+                                            <tr>
+                                                <td>su -</td>
+                                                <td class="tw">switch to root while in the shell</td>
+                                            </tr>
+                                            <tr>
+                                                <td>shutdown</td>
+                                                <td class="tw">shutdowns the system</td>
+                                            </tr>
+                                            <tr>
+                                                <td>alias &lt;short-name="&lt;command>"></td>
+                                                <td class="tw">helps to make a command short</td>
+                                            </tr>
+                                            <tr>
+                                                <td>unalias &lt;short name></td>
+                                                <td class="tw">remove or delete a saved alias</td>
+                                            </tr>
+                                            <tr>
+                                                <td>reboot</td>
+                                                <td class="tw">restarts the system</td>
+                                            </tr>
+                                            <tr>
+                                                <td>wc &lt;path to file></td>
+                                                <td class="tw">count the number of character, words and lines in a file</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//table-responsive-->
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+	                        
+	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+	                                <a class="nav-link scrollto" href="#download-section">Download</a>
+	                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#step1">Step One</a>
+                                        <a class="nav-link scrollto" href="#step2">Step Two</a>
+                                        <a class="nav-link scrollto" href="#step3">Step Three</a>
+                                    </nav><!--//nav-->
+	                                <a class="nav-link scrollto" href="#System-commands">System commands</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#System-info">System info</a>
+                                        <a class="nav-link scrollto" href="#CPU-info">CPU info</a>
+                                        <a class="nav-link scrollto" href="#System-on-time">System on time</a>
+                                        <a class="nav-link scrollto" href="#Clear-screen">Clear screen</a>
+                                        <a class="nav-link scrollto" href="#System-to-su">System to super-user</a>
+                                        <a class="nav-link scrollto" href="#Check-free-memory">Check free memory</a>
+                                        <a class="nav-link scrollto" href="#Running-processes-list">Running processes list</a>
+                                        <a class="nav-link scrollto" href="#list-process">list process</a>
+                                        <a class="nav-link scrollto" href="#Kill-process">Kill process</a>
+                                        <a class="nav-link scrollto" href="#Display-date">Display date</a>
+                                        <a class="nav-link scrollto" href="#Display-calender">Display calender</a>
+                                        <a class="nav-link scrollto" href="#Shut-down-OS">Shut down OS</a>
+                                    </nav><!--//nav-->
+                                    <a class="nav-link scrollto" href="#File-system-&-navigation">File system & navigation</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#File-system">File system</a>
+                                        <a class="nav-link scrollto" href="#Root-home-dir">Root home dir</a>
+                                        <a class="nav-link scrollto" href="#Current-path">Current path</a>
+                                        <a class="nav-link scrollto" href="#One-dir-up">One dir up</a>
+                                        <a class="nav-link scrollto" href="#List-content">List content</a>
+                                    </nav><!--//nav-->
+	                                <a class="nav-link scrollto" href="#Working-with-files">Working with files</a>
+	                                <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#Create-file">Create file</a>
+                                        <a class="nav-link scrollto" href="#Delete-file">Delete file</a>
+                                        <a class="nav-link scrollto" href="#Edit-file">Edit file</a>
+                                        <a class="nav-link scrollto" href="#View-file">View file</a>
+                                        <a class="nav-link scrollto" href="#Rename-file">Rename file</a>
+                                    </nav><!--//nav-->
+                                    <a class="nav-link scrollto" href="#Permissions">Permissions</a>
+	                                <a class="nav-link scrollto" href="#Other-cammands">Other cammands</a>
+	                            </nav><!--//doc-menu-->
+	                        
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://github.com/umer2001" target="_blank">Umer Farooq</a> for developers</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+</body>
+</html> 
+

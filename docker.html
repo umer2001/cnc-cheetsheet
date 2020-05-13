@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap 4 project documentation theme for developers</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+      
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-blue">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                            <span class="text-highlight">CNC</span><span class="text-bold">Cheet Sheet</span>
+                        </a>
+                    </h1>
+                    
+                </div><!--//branding-->
+                
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Docker</li>
+                </ol>
+                
+                <div class="top-search-box">
+	                 <form class="form-inline search-form justify-content-center" action="" method="get">
+	            
+			            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+			            
+			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+			            
+			        </form>
+                </div>
+                
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fab fa-docker"></i> Docker Quick Start</h1>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="download-section" class="doc-section">
+                                <h2 class="section-title">Download</h2>
+                                <div class="section-block">
+                                    <p>you can install docker manually by downloading</p>
+                                    <a href="https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe" class="btn btn-blue" target="_blank"><i class="fas fa-download"></i> Download Docker for windows</a>
+                                    <a href="http://get.docker.io/ubuntu/pool/main/l/lxc-docker/lxc-docker_1.6.2_amd64.deb" class="btn btn-blue" target="_blank"><i class="fas fa-download"></i> Download Docker for Ubuntu</a>
+                                    <p>if you have downloaded the .deb package for ubuntu then run the following command :</p>
+                                    <div class="code-block">
+                                        <p><code>sudo dpkg -i /path/to/package.deb</code></p>
+                                    </div><!--//code-block-->
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="installation-section" class="doc-section">
+                                <h2 class="section-title">Installation</h2>
+                                <div id="step1"  class="section-block">
+                                    <h3 class="block-title">Step One</h3>
+                                    <p>you can install docker on linux using following command</p>
+                                    <div class="code-block">
+                                        <p><code>apt-get update</code></p>
+                                        <p><code>sudo apt-get install docker.io</code></p>
+                                    </div><!--//code-block-->
+                                    <p>OR refer to the documentation <a href="https://docs.docker.com/engine/install/ubuntu/">here</a></p>
+                                </div><!--//section-block-->
+                                <div id="step2"  class="section-block">
+                                    <h3 class="block-title">Step Two</h3>
+                                    <p>Then you can verify your installation by the following commands :</p>
+                                    <div class="code-block">
+                                        <p><code>docker --version</code></p>
+                                        <p><code>docker info</code></p>
+                                        <p>following command is used to run a test container with a default hello world image :</p>
+                                        <p><code>sudo docker run hello-world</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            
+                            <section id="code-section" class="doc-section">
+                                <h2 class="section-title">Basic operations</h2>
+                                <div class="section-block">
+                                    <p>Some basic operations like starting ,stoping ,listing containers</p>
+                                </div><!--//section-block-->
+                                <div id="Pulling-an-image" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Pulling an image from docker hub </h4>
+                                        <pre><code class="language-git">docker pull aamirpinger/helloworld</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="get-list-of-images" class="section-block">
+                                    <div class="code-block">
+                                        <h4>get list of images on system</h4>
+                                        <pre><code class="language-git">docker images</code></pre>
+                                        <p>OR</p>
+                                        <pre><code class="language-git">docker image ls</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="run-container-d-mode" class="section-block">
+                                    <div class="code-block">
+                                        <h4>built and run a container from image in <b>detach</b> mode</h4>
+                                        <pre><code class="language-git">docker run -d aamirpinger/helloworld</code></pre>
+                                        <p>OR</p>
+                                        <pre><code class="language-git">docker run --name &lt;container name> -d -p&lt;port ex= 9000:80> aamirpinger/helloworld</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="run-container-it-mode" class="section-block">
+                                    <div class="code-block">
+                                        <h4>built and run a container from image in <b>interactive</b> mode</h4>
+                                        <pre><code class="language-git">docker run -it aamirpinger/helloworld:&lt;tag> sh</code></pre>
+                                        <p>OR</p>
+                                        <pre><code class="language-git">docker run --name &lt;container name> -it -p&lt;port ex= 9000:80> aamirpinger/helloworld sh</code></pre>
+                                        <div class="inmode">
+                                            <h4>stop container and get out from <b>interactive</b> mode</h4>
+                                            <pre><code class="language-git">exit</code></pre>
+                                            <h4>with out stoping container and get out from in <b>interactive</b> mode</h4>
+                                            <pre><code class="language-git">ctrl + p + q</code></pre>
+                                        </div>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Interact-existing-container" class="section-block">
+                                    <div class="code-block">
+                                        <h4><b>Interact</b> with an <b>existing</b> container</h4>
+                                        <pre><code class="language-git">docker exec -it &lt;container name or id> sh</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="get-list-of-containers" class="section-block">
+                                    <div class="code-block">
+                                        <h4>get list of containers</h4>
+                                        <p>gets list of <b>runnung</b> containers</p>
+                                        <pre><code class="language-git">docker ps</code></pre>
+                                        <p>OR</p>
+                                        <pre><code class="language-git">docker container ls</code></pre>
+                                        <p>gets list of <b>all</b> containers</p>
+                                        <pre><code class="language-git">docker ps -a</code></pre>
+                                        <p>OR</p>
+                                        <pre><code class="language-git">docker container ls -a</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Start-stop-containers" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Start or stop an existing containers</h4>
+                                        <p><b>Start</b> an existing container</p>
+                                        <pre><code class="language-git">docker start &lt;container name or id></code></pre>
+                                        <p><b>Stop</b> an existing container</p>
+                                        <pre><code class="language-git">docker stop &lt;container name or id></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Remove-container" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Remove an existing containers</h4>
+                                        <pre><code class="language-git">docker container rm &lt;container name or id></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Create-image" class="doc-section">
+                                <h2 class="section-title">Build an image to run on docker</h2>
+                                <div class="section-block">
+                                    <p>Built a simple html page image that we can run using docker.</p>
+                                    <ul>
+                                        <li>Make a folder of any name</li>
+                                        <li>Put all of your static html,  css and js in the same folder</li>
+                                        <li>Make a file named <b>Dockerfile</b> using <b>touch</b> command </li>
+                                        <li>write the following in the file :
+                                            <p>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM nginx:alpine
+                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COPY . /usr/share/nginx/html
+                                            </p>
+                                        </li>
+                                        <li>save this file</li>
+                                    </ul>
+                                    <p>COPY . is used to copy all files present in the current folder to the destination folder in the image that is to be created.<br>
+                                    Next we need to specifi whare to paste the files in image environment /usr/share/nginx/html (destination folder in the image).</p>
+                                </div><!--//section-block-->
+                                <div id="Build-the-image" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Build the image</h4>
+                                        <p>Make sure you are in the <b>same folder</b> that you created</p>
+                                        <pre><code class="language-git">docker image build -t &lt;image name>:&lt;tag> .</code></pre>
+                                        <p>here "." represents that Dockerfile is in the current directory, if Dockerfile is not in the same directory then you can write the path to Dockerfile</p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section>
+                            <section id="Push-image" class="doc-section">
+                                <h2 class="section-title">Push an image to docker hub</h2>
+                                <div class="section-block">
+                                    <p>First make sure you have created the image you want to push.
+                                        <br>then if you haven't created account and repo in docker hub follow the <a href="https://hub.docker.com/">link</a> and register an account and make a repo(repositry)
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="login-docker-hub" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Login to docker hub</h4>
+                                        <pre><code class="language-git">docker login --username &lt;username on docker hub></code></pre>
+                                        <p>now it will ask for your <b>docker hub password</b> type the password and hit enter.</p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Tag-image" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Tag image</h4>
+                                        <p>first copy the image id of your image</p>
+                                        <pre><code class="language-git">docker images</code></pre>
+                                        <p>now tag the image using the following command</p>
+                                        <pre><code class="language-git">docker tag &lt;image id> &lt;hub username>/&lt;repo name>:&lt;tag></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="push-image" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Push image</h4>
+                                        <pre><code class="language-git">docker push &lt;hub username>/&lt;repo name>:&lt;tag></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section>
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+	                        <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <a class="nav-link scrollto" href="#download-section">Download</a>
+                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#step1">Step One</a>
+                                    <a class="nav-link scrollto" href="#step2">Step Two</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#code-section">Basic operations</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Pulling-an-image">Pulling an image</a>
+                                    <a class="nav-link scrollto" href="#get-list-of-images">get list of images</a>
+                                    <a class="nav-link scrollto" href="#run-container-d-mode">run container -d mode</a>
+                                    <a class="nav-link scrollto" href="#run-container-it-mode">run container -it mode</a>
+                                    <a class="nav-link scrollto" href="#Interact-existing-container">Interact existing container</a>
+                                    <a class="nav-link scrollto" href="#get-list-of-containers">get list of containers</a>
+                                    <a class="nav-link scrollto" href="#Start-stop-containers">Start/stop containers</a>
+                                    <a class="nav-link scrollto" href="#Remove-container">Remove container</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#Create-image">Create image</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Build-the-image">Build the image</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#Push-image">Push image</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#login-docker-hub">login docker hub</a>
+                                    <a class="nav-link scrollto" href="#Tag-image">tag image</a>
+                                    <a class="nav-link scrollto" href="#push-image">push image</a>
+                                </nav><!--//nav-->
+	                        </nav><!--//doc-menu-->
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://github.com/umer2001" target="_blank">Umer Farooq</a> for developers</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+</body>
+</html> 
+
