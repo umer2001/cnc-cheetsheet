@@ -254,12 +254,7 @@ spec:
                                 <div id="handlebars" class="section-block">
                                     <div class="code-block">
                                         <h6>List ReplicaSet</h6>
-                                        <pre><code class="language-git">
-kubectl get rs                                      // display all pods with their labels
-kubectl get pods -L &lt;label key>                                    // display pods with the spicfied label key as heading
-kubectl get pods -l &lt;label key>=&lt;value>                           // display pods with the spicfied label key & value
-kubectl get pods -l '&lt;label key>in&lt;(val1,val2)>' --show-labels    // display pods with the spicfied label key & value could be either of them
-                                        </code></pre>
+                                        <pre><code class="language-git">kubectl get rs</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
@@ -319,8 +314,6 @@ kubectl get pods -l '&lt;label key>in&lt;(val1,val2)>' --show-labels    // displ
                                     </p>
                                     <h6>Delete a resource</h6>
                                     <pre><code class="language-git">kubectl delete &lt;resource-type> &lt;resource-name></code></pre>
-                                    <h6>short useful description</h6>
-                                    <pre><code class="language-git">kubectl describe &lt;resource-type> &lt;resource-name></code></pre>
                                 </div><!--//code-block-->
                             </div><!--//section-block-->
                             </section><!--//doc-section-->
