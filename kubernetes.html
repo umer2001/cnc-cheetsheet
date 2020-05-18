@@ -162,7 +162,6 @@
                                     <p>Now its all set to us kubernetes :-)</p>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            
                             <section id="code-section" class="doc-section">
                                 <h2 class="section-title">Pod</h2>
                                 <div class="section-block">
@@ -178,13 +177,13 @@
 kind: Pod
 apiVersion: v1
 metadata:
-name: &lt;pod-name>
+  name: &lt;pod-name>
 spec:
-containers:
-- name: &lt;container-name>
-image: &lt;image>
-ports:
-- containerPort: 80                                        </code></pre>
+  containers:
+  - name: &lt;container-name>
+    image: &lt;image>
+    ports:
+    - containerPort: 80                                        </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 <div id="handlebars" class="section-block">
@@ -211,11 +210,59 @@ kubectl get pods -l '&lt;label key>in&lt;(val1,val2)>' --show-labels    // displ
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
+                            <section id="code-section" class="doc-section">
+                                <h2 class="section-title">ReplicaSet</h2>
+                                <div class="section-block">
+                                    <p>
+                                        it is a resource of kuberbetes that mentaine the number of currently running copies of a pod.
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h6>ReplicaSet basic template</h6>
+                                        <pre><code class="language-markup">
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    name: frontend
+    labels:
+      app: guestbook
+spec:
+    # modify replicas according to your case
+    replicas: 3
+    selector:
+      matchLabels:
+        app: frontend
+    template:
+      metadata:
+          labels:
+            app: frontend
+      spec:
+        containers:
+        - name: &lt;container-name>
+          image: &lt;image>
+          ports:
+          - containerPort: 80                                        </code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Ceate ReplicaSet</h6>
+                                        <pre><code class="language-git">kubectl create -f &lt;name of yaml file></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h6>List ReplicaSet</h6>
+                                        <pre><code class="language-git">kubectl get rs</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
                             <section id="callouts-section" class="doc-section">
                                 <h2 class="section-title">Others</h2>
                                 <div class="section-block">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
+                                        Properties of kuberbetes resources that can be added to any resource.
                                     </p>
                                 </div>
                                 <div id="handlebars" class="section-block">
@@ -246,6 +293,29 @@ kubectl get pods -l '&lt;label key>in&lt;(val1,val2)>' --show-labels    // displ
                                         <pre><code class="language-git">kubectl annotate &lt;resource-type> &lt;resource-name> &lt;key>-</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                  <div class="code-block">
+                                      <h4>Output | Info | Description about a resource</h4>
+                                      <p>
+                                        This command helps to get information about any resource in kubenetes in json or yaml formet.
+                                        <br>it is mostly used to debug a resource. 
+                                      </p>
+                                      <h6>output of a resource</h6>
+                                      <pre><code class="language-git">kubectl get &lt;resource-type> &lt;resource-name> -o &lt;formet json or yaml></code></pre>
+                                      <h6>short useful description</h6>
+                                      <pre><code class="language-git">kubectl describe &lt;resource-type> &lt;resource-name></code></pre>
+                                  </div><!--//code-block-->
+                              </div><!--//section-block-->
+                              <div id="handlebars" class="section-block">
+                                <div class="code-block">
+                                    <h4>Delete a resource</h4>
+                                    <p>
+                                      This command deletes a resource. 
+                                    </p>
+                                    <h6>Delete a resource</h6>
+                                    <pre><code class="language-git">kubectl delete &lt;resource-type> &lt;resource-name></code></pre>
+                                </div><!--//code-block-->
+                            </div><!--//section-block-->
                             </section><!--//doc-section-->
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
