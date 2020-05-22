@@ -370,6 +370,120 @@ spec:
                                   </div><!--//code-block-->
                               </div><!--//section-block-->
                             </section><!--//doc-section-->
+                            <section id="code-section" class="doc-section">
+                                <h2 class="section-title">Probes</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Probe means to inspect,probe checks our application again and again afterv s spicific period of time to check if its is working correctly.
+                                        <br>link to official documentation of probes <a target="_blank" href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">link</a>
+                                        <br> There are <b>2 types</b> of Probes
+                                        <ol>
+                                            <li>Liveness probe (re-starts the container if fails)</li>
+                                            <li>Readiness probe (restricts access to container if fails)</li>
+                                        </ol>
+                                    </p>
+                                </div><!--//section-block-->
+                                <ol>
+                                    <li>
+                                        <div id="html" class="section-block">
+                                            <div class="code-block">
+                                                <h4>Liveness probe</h4>
+                                                <p>
+                                                    liveness probe checks our application again and again after a spicific period of time to check if its is working correctly
+                                                    <br>If it fails it restarts the container. 
+                                                    <br>There are <b>3 types of liveness</b> probe
+                                                    <ol>
+                                                        <li>http get => sends a http request and checks for response</li>
+                                                        <li>tcp socket => tries to make connection on container port</li>
+                                                        <li>exec => executes a command in the application container to check if it is hanged</li>
+                                                    </ol>
+                                                </p>
+                                                <h6>HTTP GET basic template</h6>
+                                                <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+  &lt;key>: &lt;value>
+  name: &lt;Pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;container-image>
+    livenessProbe:
+      httpGet:
+        path: /   #root
+        port: &lt;Pod-port or container-port>
+      initialDelaySeconds: &lt;delay before first check>
+      periodSeconds: &lt;time to wait after each check>
+                                                </code></pre>
+                                                <h6>TCP socket basic template</h6>
+                                                <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;container-image>
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      tcpSocket:
+        port: &lt;container-port>
+      initialDelaySeconds: &lt;delay before first check>
+      periodSeconds: &lt;time to wait after each check>
+                                                </code></pre>
+                                                <h6>EXEC basic template</h6>
+                                                <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;container-image>
+    livenessProbe:
+      exec:
+        command:
+        - &lt;command eg: ls>
+      initialDelaySeconds: &lt;delay before first check>
+      periodSeconds: &lt;time to wait after each check>
+                                                </code></pre>
+                                            </div><!--//code-block-->
+                                        </div><!--//section-block-->
+                                    </li>
+                                    <li>
+                                        <div id="handlebars" class="section-block">
+                                            <div class="code-block">
+                                                <h4>Readiness probe</h4>
+                                                <p>
+                                                  Readiness checks our application again and again after a spicific period of time to check if its is working correctly
+                                                  <br>If it fails it restricts access to container. 
+                                                  <br>There are <b>3 types of readiness</b> probe
+                                                  <ol>
+                                                      <li>http get => sends a http request and checks for response</li>
+                                                      <li>tcp socket => tries to make connection on container port</li>
+                                                      <li>exec => executes a command in the application container to check if it is hanged</li>
+                                                  </ol>
+                                              </p>
+                                              <div class="callout-block callout-info">
+                                                <div class="icon-holder">
+                                                    <i class="fas fa-bullhorn"></i>
+                                                </div><!--//icon-holder-->
+                                                <div class="content">
+                                                    <h4 class="callout-title">Note:</h4>
+                                                    <p>All 3 templates are same as the liveness probe <b>except:</b>
+                                                    <br>use <code>readinessProbe:</code> instead of <code>livenessProbe:</code></p>
+                                                </div><!--//content-->
+                                            </div><!--//callout-->
+                                            </div><!--//code-block-->
+                                        </div><!--//section-block-->
+                                    </li>
+                                </ol>
+                            </section><!--//doc-section-->
                             <section id="callouts-section" class="doc-section">
                                 <h2 class="section-title">Others</h2>
                                 <div class="section-block">
