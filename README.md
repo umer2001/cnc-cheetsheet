@@ -8,3 +8,6 @@ CNC Cheet Sheet is a simple static website that can help a developer specially a
 2. Creation
 3. etc
 and all this stuff is destributed in catagories of defferent tools.
+
+### How to contribute
+1. you can view the second part of the video https://www.youtube.com/watch?v=Cq_hry-OaWY

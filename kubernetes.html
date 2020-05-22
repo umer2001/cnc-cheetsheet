@@ -299,40 +299,77 @@ spec:
   backoffLimit: 4</code></pre>
                                   </div><!--//code-block-->
                               </div><!--//section-block-->
-                          </section><!--//doc-section-->
-                          <section id="code-section" class="doc-section">
-                            <h2 class="section-title">Cron Job</h2>
-                            <div class="section-block">
-                                <p>
-                                    it is a resource of kuberbetes that creates a job that can repeat after certain time.
-                                    <br> first it creats a job then a pod that does the specified work.
-                                </p>
-                                
-                            </div><!--//section-block-->
-                            <div id="html" class="section-block">
-                                <div class="code-block">
-                                    <h6>Cron job basic template</h6>
-                                    <pre><code class="language-markup">
-apiVersion: batch/v1beta1
-kind: CronJob
-metadata:
-  name: &lt;cron job name>
-spec:
-  schedule: "*/1 * * * *"
-  jobTemplate:   # job
+                            </section><!--//doc-section-->
+                            <section id="code-section" class="doc-section">
+                                <h2 class="section-title">Cron Job</h2>
+                                <div class="section-block">
+                                    <p>
+                                        it is a resource of kuberbetes that creates a job that can repeat after certain time.
+                                        <br> first it creats a job then a pod that does the specified work.
+                                    </p>
+                                    
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Cron job basic template</h6>
+                                        <pre><code class="language-markup">
+    apiVersion: batch/v1beta1
+    kind: CronJob
+    metadata:
+    name: &lt;cron job name>
     spec:
-      template:  # pod template
+    schedule: "*/1 * * * *"
+    jobTemplate:   # job
         spec:
-          containers:
-          - name: &lt;container-name>
-            image: &lt;image>
-            command: ["echo",  "Hello world"]
-          restartPolicy: OnFailure
-                                      </code></pre>
-                                  <p><b>Note :</b> here ***** reprisents minute | hour | day | month | year</p>
-                                </div><!--//code-block-->
-                            </div><!--//section-block-->
-                        </section><!--//doc-section-->
+        template:  # pod template
+            spec:
+            containers:
+            - name: &lt;container-name>
+                image: &lt;image>
+                command: ["echo",  "Hello world"]
+            restartPolicy: OnFailure
+                                        </code></pre>
+                                    <p><b>Note :</b> here ***** reprisents minute | hour | day | month | year</p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="code-section" class="doc-section">
+                                <h2 class="section-title">Service</h2>
+                                <div class="section-block">
+                                    <p>
+                                      it is a resource of kuberbetes that allows us to manage routing.<br>
+                                      There are mainly 2 type of services
+                                      <ol>
+                                        <li>External-ip</li>
+                                        <li>LoadBalancer</li>
+                                      </ol>
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Service basic template</h6>
+                                        <pre><code class="language-markup">
+apiVersion: v1
+kind: Service
+metadata:
+  name: &lt;service-name>
+spec:
+  selector:
+  &lt;label-key>: &lt;label-value>
+  ports:
+    - port: &lt;Pod-port>
+      targetPort: &lt;container-exposed-port>
+  type: LoadBalancer</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                  <div class="code-block">
+                                      <h6>Service using command line</h6>
+                                      <p>For this you should have a <b>ReplicaSet</b> managing one or more pods.</p>
+                                      <pre><code class="language-git">kubectl expose rs &lt;ReplicaSet-name> --name=&lt;Service-name> --selector=&lt;label-key>=&lt;label-value> --port=&lt;Pod-port> --target-port=&lt;container-exposed-port> --type=LoadBalancer</code></pre>
+                                  </div><!--//code-block-->
+                              </div><!--//section-block-->
+                            </section><!--//doc-section-->
                             <section id="callouts-section" class="doc-section">
                                 <h2 class="section-title">Others</h2>
                                 <div class="section-block">
@@ -458,5 +495,4 @@ spec:
     <script type="text/javascript" src="assets/js/main.js"></script>
     
 </body>
-</html> 
-
+</html>
