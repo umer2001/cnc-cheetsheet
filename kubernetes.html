@@ -484,6 +484,118 @@ spec:
                                     </li>
                                 </ol>
                             </section><!--//doc-section-->
+                            <section id="code-section" class="doc-section">
+                                <h2 class="section-title">Volumes</h2>
+                                <div class="section-block">
+                                    <p>
+                                      actually it is <b>not a resource</b> of kuberbetes it is mostly written or defined in the <b>spec:</b> of Pods.<br>
+                                      it actually helps us to share data between containers or whole cluster, not only that but also allow us to retain data if the pod or the container is deleted. r you can say that it store & share data on the <b>pod level</b><br>
+                                      there are many types of volumes.
+                                      <ul>
+                                        <li>empty dir</li>
+                                        <li>configmam, secret, downward API</li>
+                                        <li>presistant vloumes</li>
+                                        <li>git repo</li>
+                                        <li>gce presistant disk</li>
+                                        <li>aws Elastic block storage</li>
+                                        <li>Azure disk</li>
+                                      </ul>
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h6>emptyDir volume basic template</h6>
+                                        <p>it is usually used to share data b/w two or more containers in a single pod, as it makes a directory shared b/w containers.</p>
+                                        <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  volumes:
+  - name: &lt;volume-name>
+    emptyDir: {}
+  containers:
+  - image: &lt;container-image>
+    name: &lt;container-name>
+    volumeMounts:
+    - mountPath: &lt;path>   #path of dir to share
+      name: &lt;volume-name>    #that is mentioned above
+  - image: &lt;container-image>
+    name: &lt;container-name>
+    volumeMounts:
+    - mountPath: &lt;path>   #path of dir to share
+      name: &lt;volume-name>    #that is mentioned above</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="code-section" class="doc-section">
+                              <h2 class="section-title">persistent Volumes</h2>
+                              <div class="section-block">
+                                  <p>
+                                    presistant volumes are a little different than other volumes as the store & share data on the <b>cluster level</b><br>
+                                    it also works a little differently. Below are the steps to use and work with persistent volume (pv).
+                                    <ol>
+                                      <li>Make a persistent volume (pv)</li>
+                                      <li>Make a persistent volume claim (pvc)</li>
+                                      <li>Mount it in a pod as volume using (pvc)</li>
+                                    </ol>
+                                  </p>
+                              </div><!--//section-block-->
+                              <div id="html" class="section-block">
+                                  <div class="code-block">
+                                      <h6>persistent Volume basic template</h6>
+                                      <p>you can access host file system by <code>minikube ssh</code> command</p>
+                                      <pre><code class="language-markup">
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: &lt;pv-name>
+spec:
+  capacity:
+    storage: &lt;storage size eg: 5Gi>
+  hostPath:
+    path: &lt;path> #pth where to store data on cluster
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: &lt;Recycle or Retain or Delete></code></pre>
+                                  </div><!--//code-block-->
+                                  <div class="code-block">
+                                    <h6>persistent Volume claim basic template</h6>
+                                    <pre><code class="language-markup">
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: &lt;pvc-name>
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: &lt;storage size eg: 100M>
+  storageClassName: ""</code></pre>
+                                </div><!--//code-block-->
+                                <div class="code-block">
+                                  <h6>Pod mounting persistent Volume basic template</h6>
+                                  <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  volumes:
+    - name: &lt;volume-name>
+      persistentVolumeClaim:
+        claimName: &lt;pvc-name>    #use pvc name that you have created
+  containers:
+    - name: &lt;container-name>
+      image: &lt;container-image>
+      volumeMounts:
+      - mountPath: &lt;path>    #path of dir to share
+        name: &lt;volume-name>    #that is mentioned above</code></pre>
+                              </div><!--//code-block-->
+                              </div><!--//section-block-->
+                          </section><!--//doc-section-->
                             <section id="callouts-section" class="doc-section">
                                 <h2 class="section-title">Others</h2>
                                 <div class="section-block">
