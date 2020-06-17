@@ -89,11 +89,12 @@
                                     </p>
                                     <div class="code-block">
                                         <h6>Commands:</h6>
-                                        <p><code>sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2</code></p>
-                                        <p><code>curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -</code></p>
-                                        <p><code>echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list</code></p>
-                                        <p><code>sudo apt-get update</code></p>
-                                        <p><code>sudo apt-get install -y kubectl</code></p>
+                                        <p><code>sudo apt-get install curl</code></p>
+                                        <p><code>curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl</code></p>
+                                        <p><code>chmod +x ./kubectl</code></p>
+                                        <p><code>sudo mv ./kubectl /usr/local/bin/kubectl</code></p>
+                                        <p>To test run below command</p>
+                                        <p><code>kubectl version --client</code></p>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 <div id="step2"  class="section-block">
