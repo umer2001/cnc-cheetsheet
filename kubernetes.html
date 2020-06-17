@@ -163,7 +163,7 @@
                                     <p>Now its all set to us kubernetes :-)</p>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="Pod" class="doc-section">
                                 <h2 class="section-title">Pod</h2>
                                 <div class="section-block">
                                     <p>
@@ -171,7 +171,7 @@
                                     </p>
                                     
                                 </div><!--//section-block-->
-                                <div id="html" class="section-block">
+                                <div id="Pod-basic-template" class="section-block">
                                     <div class="code-block">
                                         <h6>Pod basic template</h6>
                                         <pre><code class="language-markup">
@@ -187,19 +187,19 @@ spec:
     - containerPort: 80                                        </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Pod-using-cmd" class="section-block">
                                     <div class="code-block">
                                         <h6>Simple pod using command line</h6>
                                         <pre><code class="language-git">kubectl run &lt;name of pod> --image=&lt;name of the image from registry></code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Port-forward-pod" class="section-block">
                                     <div class="code-block">
                                         <h6>Port forward pod</h6>
                                         <pre><code class="language-git">kubectl port-forward &lt;pod-name> &lt;desired-port>:&lt;pod-exposed-port></code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="List-pods" class="section-block">
                                     <div class="code-block">
                                         <h6>List pods</h6>
                                         <pre><code class="language-git">
@@ -211,14 +211,14 @@ kubectl get pods -l '&lt;label key>in&lt;(val1,val2)>' --show-labels    // displ
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="ReplicaSet" class="doc-section">
                                 <h2 class="section-title">ReplicaSet</h2>
                                 <div class="section-block">
                                     <p>
                                         it is a resource of kuberbetes that mentaine the number of currently running copies of a pod.
                                     </p>
                                 </div><!--//section-block-->
-                                <div id="html" class="section-block">
+                                <div id="RSet-basic-template" class="section-block">
                                     <div class="code-block">
                                         <h6>ReplicaSet basic template</h6>
                                         <pre><code class="language-markup">
@@ -252,20 +252,20 @@ spec:
                                         <pre><code class="language-git">kubectl create -f &lt;name of yaml file></code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="List-ReplicaSet" class="section-block">
                                     <div class="code-block">
                                         <h6>List ReplicaSet</h6>
                                         <pre><code class="language-git">kubectl get rs</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Scale-ReplicaSet" class="section-block">
                                     <div class="code-block">
                                         <h6>Scale ReplicaSet</h6>
                                         <p>it will increase or decrease the number of pods that are managed by a ReplicaSet</p>
                                         <pre><code class="language-git">kubectl scale rs &lt;ReplicaSet-name> --replicas=&lt;desired-number></code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Delete-ReplicaSet" class="section-block">
                                     <div class="code-block">
                                         <h6>Delete ReplicaSet</h6>
                                         <p>This command will <b>delete replicaset without deleting pods</b> generated by that replica set</p>
@@ -273,7 +273,7 @@ spec:
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="Job" class="doc-section">
                               <h2 class="section-title">Job</h2>
                               <div class="section-block">
                                   <p>
@@ -301,7 +301,7 @@ spec:
                                   </div><!--//code-block-->
                               </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="Cron-Job" class="doc-section">
                                 <h2 class="section-title">Cron Job</h2>
                                 <div class="section-block">
                                     <p>
@@ -334,7 +334,7 @@ spec:
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="Service" class="doc-section">
                                 <h2 class="section-title">Service</h2>
                                 <div class="section-block">
                                     <p>
@@ -346,7 +346,7 @@ spec:
                                       </ol>
                                     </p>
                                 </div><!--//section-block-->
-                                <div id="html" class="section-block">
+                                <div id="Service-basic-template" class="section-block">
                                     <div class="code-block">
                                         <h6>Service basic template</h6>
                                         <pre><code class="language-markup">
@@ -363,7 +363,7 @@ spec:
   type: LoadBalancer</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Service-using-cmd" class="section-block">
                                   <div class="code-block">
                                       <h6>Service using command line</h6>
                                       <p>For this you should have a <b>ReplicaSet</b> managing one or more pods.</p>
@@ -371,7 +371,7 @@ spec:
                                   </div><!--//code-block-->
                               </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="Probes" class="doc-section">
                                 <h2 class="section-title">Probes</h2>
                                 <div class="section-block">
                                     <p>
@@ -386,7 +386,7 @@ spec:
                                 </div><!--//section-block-->
                                 <ol>
                                     <li>
-                                        <div id="html" class="section-block">
+                                        <div id="Liveness-probe" class="section-block">
                                             <div class="code-block">
                                                 <h4>Liveness probe</h4>
                                                 <p>
@@ -457,7 +457,7 @@ spec:
                                         </div><!--//section-block-->
                                     </li>
                                     <li>
-                                        <div id="handlebars" class="section-block">
+                                        <div id="Readiness-probe" class="section-block">
                                             <div class="code-block">
                                                 <h4>Readiness probe</h4>
                                                 <p>
@@ -485,7 +485,7 @@ spec:
                                     </li>
                                 </ol>
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="Volumes" class="doc-section">
                                 <h2 class="section-title">Volumes</h2>
                                 <div class="section-block">
                                     <p>
@@ -530,7 +530,7 @@ spec:
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="code-section" class="doc-section">
+                            <section id="persistent-Volumes" class="doc-section">
                               <h2 class="section-title">persistent Volumes</h2>
                               <div class="section-block">
                                   <p>
@@ -543,7 +543,7 @@ spec:
                                     </ol>
                                   </p>
                               </div><!--//section-block-->
-                              <div id="html" class="section-block">
+                              <div id="PV-basic-template" class="section-block">
                                   <div class="code-block">
                                       <h6>persistent Volume basic template</h6>
                                       <p>you can access host file system by <code>minikube ssh</code> command</p>
@@ -561,7 +561,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: &lt;Recycle or Retain or Delete></code></pre>
                                   </div><!--//code-block-->
-                                  <div class="code-block">
+                                  <div id="PVC-basic-template" class="code-block">
                                     <h6>persistent Volume claim basic template</h6>
                                     <pre><code class="language-markup">
 apiVersion: v1
@@ -576,7 +576,7 @@ spec:
       storage: &lt;storage size eg: 100M>
   storageClassName: ""</code></pre>
                                 </div><!--//code-block-->
-                                <div class="code-block">
+                                <div id="Pod-mounting-pv-basic-template" class="code-block">
                                   <h6>Pod mounting persistent Volume basic template</h6>
                                   <pre><code class="language-markup">
 apiVersion: v1
@@ -597,14 +597,14 @@ spec:
                               </div><!--//code-block-->
                               </div><!--//section-block-->
                           </section><!--//doc-section-->
-                            <section id="callouts-section" class="doc-section">
+                            <section id="Others" class="doc-section">
                                 <h2 class="section-title">Others</h2>
                                 <div class="section-block">
                                     <p>
                                         Properties of kuberbetes resources that can be added to any resource.
                                     </p>
                                 </div>
-                                <div id="handlebars" class="section-block">
+                                <div id="Labels" class="section-block">
                                     <div class="code-block">
                                         <h4>Labels</h4>
                                         <p>
@@ -618,7 +618,7 @@ spec:
                                         <pre><code class="language-git">kubectl label &lt;resource-type> &lt;resource-name> &lt;key>-</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Annotations" class="section-block">
                                     <div class="code-block">
                                         <h4>Annotations</h4>
                                         <p>
@@ -632,7 +632,7 @@ spec:
                                         <pre><code class="language-git">kubectl annotate &lt;resource-type> &lt;resource-name> &lt;key>-</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Description-about-a-resource" class="section-block">
                                   <div class="code-block">
                                       <h4>Output | Info | Description about a resource</h4>
                                       <p>
@@ -645,7 +645,7 @@ spec:
                                       <pre><code class="language-git">kubectl describe &lt;resource-type> &lt;resource-name></code></pre>
                                   </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Edit-a-resource-during-runtime" class="section-block">
                                     <div class="code-block">
                                         <h4>Edit a resource during runtime</h4>
                                         <p>
@@ -655,7 +655,7 @@ spec:
                                         <pre><code class="language-git">kubectl edit &lt;resource-type> &lt;resource-name></code></pre>
                                     </div><!--//code-block-->
                                   </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
+                                <div id="Delete-a-resource" class="section-block">
                                     <div class="code-block">
                                         <h4>Delete a resource</h4>
                                         <p>
@@ -678,23 +678,49 @@ spec:
                                         <a class="nav-link scrollto" href="#step1">Step One</a>
                                         <a class="nav-link scrollto" href="#step2">Step Two</a>
                                         <a class="nav-link scrollto" href="#step3">Step Three</a>
+                                        <a class="nav-link scrollto" href="#step4">Step Four</a>
                                     </nav><!--//nav-->
-	                                <a class="nav-link scrollto" href="#code-section">Code</a>
+	                                <a class="nav-link scrollto" href="#Pod">Pod</a>
                                     <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#html">HTML</a>
-                                        <a class="nav-link scrollto" href="#css">CSS</a>
-                                        <a class="nav-link scrollto" href="#sass">Sass</a>
-                                        <a class="nav-link scrollto" href="#less">LESS</a>
-                                        <a class="nav-link scrollto" href="#javascript">JavaScript</a>
-                                        <a class="nav-link scrollto" href="#python">Python</a>
-                                        <a class="nav-link scrollto" href="#php">PHP</a>
-                                        <a class="nav-link scrollto" href="#handlebars">Handlebars</a>
+                                        <a class="nav-link scrollto" href="#Pod-basic-template">Pod basic template</a>
+                                        <a class="nav-link scrollto" href="#Pod-using-cmd">Pod using cmd</a>
+                                        <a class="nav-link scrollto" href="#Port-forward-pod">Port forward pod</a>
+                                        <a class="nav-link scrollto" href="#List-pods">List pods</a>
                                     </nav><!--//nav-->
-	                                <a class="nav-link scrollto" href="#callouts-section">Callouts</a>
-	                                <a class="nav-link scrollto" href="#tables-section">Tables</a>
-	                                <a class="nav-link scrollto" href="#buttons-section">Buttons</a>
-	                                <a class="nav-link scrollto" href="#video-section">Video</a>
-	                                <a class="nav-link scrollto" href="#icons-section">Icons</a>
+                                    <a class="nav-link scrollto" href="#ReplicaSet">ReplicaSet</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#RSet-basic-template">RSet basic template</a>
+                                        <a class="nav-link scrollto" href="#List-ReplicaSet">List ReplicaSet</a>
+                                        <a class="nav-link scrollto" href="#Scale-ReplicaSet">Scale ReplicaSet</a>
+                                        <a class="nav-link scrollto" href="#Delete-ReplicaSet">Delete ReplicaSet</a>
+                                    </nav>
+                                    <a class="nav-link scrollto" href="#Job">Job</a>
+                                    <a class="nav-link scrollto" href="#Cron-Job">Cron Job</a>
+                                    <a class="nav-link scrollto" href="#Service">Service</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#Service-basic-template">Service basic template</a>
+                                        <a class="nav-link scrollto" href="#Service-using-cmd">Service using cmd</a>
+                                    </nav>
+                                    <a class="nav-link scrollto" href="#Probes">Probes</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#Liveness-probe">Liveness probe</a>
+                                        <a class="nav-link scrollto" href="#Readiness-probe">Readiness probe</a>
+                                    </nav>
+                                    <a class="nav-link scrollto" href="#Volumes">Volumes</a>
+                                    <a class="nav-link scrollto" href="#persistent-Volumes">persistent Volumes</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#PV-basic-template">PV basic template</a>
+                                        <a class="nav-link scrollto" href="#PVC-basic-template">PVC basic template</a>
+                                        <a class="nav-link scrollto" href="#Pod-mounting-pv-basic-template">Pod mounting pv basic template</a>
+                                    </nav>
+                                    <a class="nav-link scrollto" href="#Others">Others</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#Labels">Labels</a>
+                                        <a class="nav-link scrollto" href="#Annotations">Annotations</a>
+                                        <a class="nav-link scrollto" href="#Description-about-a-resource">Description about a resource</a>
+                                        <a class="nav-link scrollto" href="#Edit-a-resource-during-runtime">Edit a resource during runtime</a>
+                                        <a class="nav-link scrollto" href="#Delete-a-resource">Delete a resource</a>
+                                    </nav>
 	                            </nav><!--//doc-menu-->
 	                        
                         </div>
