@@ -596,7 +596,95 @@ spec:
         name: &lt;volume-name>    #that is mentioned above</code></pre>
                               </div><!--//code-block-->
                               </div><!--//section-block-->
-                          </section><!--//doc-section-->
+                            </section><!--//doc-section-->
+                            <section id="conf-deployment" class="doc-section">
+                                <h2 class="section-title">Configuration & Deployment</h2>
+                                <div class="section-block">
+                                    <p>
+                                      In this section we will see tools for configuration and deployments provided by kubernetes.
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="ConfigMap" class="section-block">
+                                    <div class="code-block">
+                                        <h4>ConfigMap</h4>
+                                        <p>
+                                            It is a resource that can hold some configurations of your application so that you don't have to mess with application code to make some configuration changes<br>
+                                            There are two types of config map. 
+                                            <ol>
+                                                <li>One that can be made as text file and can be mounted on a pod as volume</li>
+                                                <li>One that can be made as env file and can be attached to a pod</li>
+                                            </ol>
+                                        </p>
+                                        <h6>Config map using cmd</h6>
+                                        <pre><code class="language-git">kubectl create configmap &lt;resource-name> --from-literal=&lt;key1>=&lt;val1> --from-literal=&lt;key2>=&lt;val2></code></pre>
+                                        <h6>Config map using txt file</h6>
+                                        <p>
+                                            <ol>
+                                                <li>create a text file abc.txt</li>
+                                                <li>write : <br>ke1=value1<br>ke2=value2</li>
+                                                <li>save the file.</li>
+                                                <li>use command <pre><code class="language-git">kubectl create cm &lt;resource-name> from-file=&lt;file-name.txt></code></pre></li>
+                                                <li>
+                                                    now mount it on pod as volume<br>
+                                                    <b>Template</b><br>
+                                                    <pre><code class=" language-markup">
+kind: Pod
+apiVersion: v1
+metadata:
+  name: &lt;pod-name>
+spec:
+  volumes:
+  - name: &lt;volume-name>
+  configMap:
+      name: &lt;confifMap-name>
+  containers:
+  - name: &lt;container-name>
+      image: &lt;image>
+      ports:
+      - containerPort: 80 
+      volumeMounts:
+      - name: &lt;volume-name>
+          mountPath: /path/to/mount
+                                                        
+                                                    </code></pre>
+                                                </li>
+                                                <li>create this pod any you are done.</li>
+                                            </ol>
+                                        </p>
+                                        <h6>Config map using env file</h6>
+                                        <p>
+                                            <ol>
+                                                <li>create a text file abc.env</li>
+                                                <li>write : <br>ke1=value1<br>ke2=value2</li>
+                                                <li>save the file.</li>
+                                                <li>use command <pre><code class="language-git">kubectl create cm &lt;resource-name> from-env-file=&lt;file-name.env></code></pre></li>
+                                                <li>
+                                                    link a pod with configMap<br>
+                                                    <b>Template</b><br>
+                                                    <pre><code class=" language-markup">
+kind: Pod
+apiVersion: v1
+metadata:
+    name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;image>
+    ports:
+    - containerPort: 80
+    envFrom:
+    - configMapRef:
+        name: &lt;configMap-name>
+                                                        
+                                                    </code></pre>
+                                                </li>
+                                                <li>create this pod any you are done.</li>
+                                            </ol>
+                                        </p>
+                                        
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
                             <section id="Others" class="doc-section">
                                 <h2 class="section-title">Others</h2>
                                 <div class="section-block">
@@ -671,57 +759,57 @@ spec:
                     <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
                         <div id="doc-nav" class="doc-nav">
 	                        
-	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
-	                                <a class="nav-link scrollto" href="#download-section">Download</a>
-	                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#step1">Step One</a>
-                                        <a class="nav-link scrollto" href="#step2">Step Two</a>
-                                        <a class="nav-link scrollto" href="#step3">Step Three</a>
-                                        <a class="nav-link scrollto" href="#step4">Step Four</a>
-                                    </nav><!--//nav-->
-	                                <a class="nav-link scrollto" href="#Pod">Pod</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#Pod-basic-template">Pod basic template</a>
-                                        <a class="nav-link scrollto" href="#Pod-using-cmd">Pod using cmd</a>
-                                        <a class="nav-link scrollto" href="#Port-forward-pod">Port forward pod</a>
-                                        <a class="nav-link scrollto" href="#List-pods">List pods</a>
-                                    </nav><!--//nav-->
-                                    <a class="nav-link scrollto" href="#ReplicaSet">ReplicaSet</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#RSet-basic-template">RSet basic template</a>
-                                        <a class="nav-link scrollto" href="#List-ReplicaSet">List ReplicaSet</a>
-                                        <a class="nav-link scrollto" href="#Scale-ReplicaSet">Scale ReplicaSet</a>
-                                        <a class="nav-link scrollto" href="#Delete-ReplicaSet">Delete ReplicaSet</a>
-                                    </nav>
-                                    <a class="nav-link scrollto" href="#Job">Job</a>
-                                    <a class="nav-link scrollto" href="#Cron-Job">Cron Job</a>
-                                    <a class="nav-link scrollto" href="#Service">Service</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#Service-basic-template">Service basic template</a>
-                                        <a class="nav-link scrollto" href="#Service-using-cmd">Service using cmd</a>
-                                    </nav>
-                                    <a class="nav-link scrollto" href="#Probes">Probes</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#Liveness-probe">Liveness probe</a>
-                                        <a class="nav-link scrollto" href="#Readiness-probe">Readiness probe</a>
-                                    </nav>
-                                    <a class="nav-link scrollto" href="#Volumes">Volumes</a>
-                                    <a class="nav-link scrollto" href="#persistent-Volumes">persistent Volumes</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#PV-basic-template">PV basic template</a>
-                                        <a class="nav-link scrollto" href="#PVC-basic-template">PVC basic template</a>
-                                        <a class="nav-link scrollto" href="#Pod-mounting-pv-basic-template">Pod mounting pv basic template</a>
-                                    </nav>
-                                    <a class="nav-link scrollto" href="#Others">Others</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#Labels">Labels</a>
-                                        <a class="nav-link scrollto" href="#Annotations">Annotations</a>
-                                        <a class="nav-link scrollto" href="#Description-about-a-resource">Description about a resource</a>
-                                        <a class="nav-link scrollto" href="#Edit-a-resource-during-runtime">Edit a resource during runtime</a>
-                                        <a class="nav-link scrollto" href="#Delete-a-resource">Delete a resource</a>
-                                    </nav>
-	                            </nav><!--//doc-menu-->
+                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <a class="nav-link scrollto" href="#download-section">Download</a>
+                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#step1">Step One</a>
+                                    <a class="nav-link scrollto" href="#step2">Step Two</a>
+                                    <a class="nav-link scrollto" href="#step3">Step Three</a>
+                                    <a class="nav-link scrollto" href="#step4">Step Four</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#Pod">Pod</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Pod-basic-template">Pod basic template</a>
+                                    <a class="nav-link scrollto" href="#Pod-using-cmd">Pod using cmd</a>
+                                    <a class="nav-link scrollto" href="#Port-forward-pod">Port forward pod</a>
+                                    <a class="nav-link scrollto" href="#List-pods">List pods</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#ReplicaSet">ReplicaSet</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#RSet-basic-template">RSet basic template</a>
+                                    <a class="nav-link scrollto" href="#List-ReplicaSet">List ReplicaSet</a>
+                                    <a class="nav-link scrollto" href="#Scale-ReplicaSet">Scale ReplicaSet</a>
+                                    <a class="nav-link scrollto" href="#Delete-ReplicaSet">Delete ReplicaSet</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#Job">Job</a>
+                                <a class="nav-link scrollto" href="#Cron-Job">Cron Job</a>
+                                <a class="nav-link scrollto" href="#Service">Service</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Service-basic-template">Service basic template</a>
+                                    <a class="nav-link scrollto" href="#Service-using-cmd">Service using cmd</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#Probes">Probes</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Liveness-probe">Liveness probe</a>
+                                    <a class="nav-link scrollto" href="#Readiness-probe">Readiness probe</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#Volumes">Volumes</a>
+                                <a class="nav-link scrollto" href="#persistent-Volumes">persistent Volumes</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#PV-basic-template">PV basic template</a>
+                                    <a class="nav-link scrollto" href="#PVC-basic-template">PVC basic template</a>
+                                    <a class="nav-link scrollto" href="#Pod-mounting-pv-basic-template">Pod mounting pv basic template</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#Others">Others</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Labels">Labels</a>
+                                    <a class="nav-link scrollto" href="#Annotations">Annotations</a>
+                                    <a class="nav-link scrollto" href="#Description-about-a-resource">Description about a resource</a>
+                                    <a class="nav-link scrollto" href="#Edit-a-resource-during-runtime">Edit a resource during runtime</a>
+                                    <a class="nav-link scrollto" href="#Delete-a-resource">Delete a resource</a>
+                                </nav>
+                            </nav><!--//doc-menu-->
 	                        
                         </div>
                     </div><!--//doc-sidebar-->
