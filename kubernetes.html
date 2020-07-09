@@ -67,7 +67,7 @@
                                 <h2 class="section-title">Installation & Setup</h2>
                                 <div class="section-block">
                                     <p>
-                                        When working with a tool like kubernetes its is very important to make a good friendship with its <b>documentation</b> <a href="https://kubernetes.io/docs/home/">link</a> <br>
+                                        When working with a tool like kubernetes it is very important to make a good friendship with its <b>documentation</b> <a href="https://kubernetes.io/docs/home/">link</a> <br>
                                         to setup kubernetes we will need two main components
                                         <ul>
                                             <li>kubectl</li>
@@ -167,7 +167,7 @@
                                 <h2 class="section-title">Pod</h2>
                                 <div class="section-block">
                                     <p>
-                                        it is a resource of kuberbetes that isolates container or group of containers, every pod has its own ip address and each container in it has different port number.
+                                        it is a resource of Kubernetes that isolates container or group of containers, every pod has its own ip address and each container in it has different port number.
                                     </p>
                                     
                                 </div><!--//section-block-->
@@ -215,7 +215,7 @@ kubectl get pods -l '&lt;label key>in&lt;(val1,val2)>' --show-labels    // displ
                                 <h2 class="section-title">ReplicaSet</h2>
                                 <div class="section-block">
                                     <p>
-                                        it is a resource of kuberbetes that mentaine the number of currently running copies of a pod.
+                                        it is a resource of kubernetes that maintain the number of currently running copies of a pod.
                                     </p>
                                 </div><!--//section-block-->
                                 <div id="RSet-basic-template" class="section-block">
@@ -277,7 +277,7 @@ spec:
                               <h2 class="section-title">Job</h2>
                               <div class="section-block">
                                   <p>
-                                      it is a resource of kuberbetes that creates a pod that does a specific task and gets terminated.
+                                      it is a resource of kubernetes that creates a pod that does a specific task and gets terminated.
                                   </p>
                                   
                               </div><!--//section-block-->
@@ -305,7 +305,7 @@ spec:
                                 <h2 class="section-title">Cron Job</h2>
                                 <div class="section-block">
                                     <p>
-                                        it is a resource of kuberbetes that creates a job that can repeat after certain time.
+                                        it is a resource of kubernetes that creates a job that can repeat after certain time.
                                         <br> first it creats a job then a pod that does the specified work.
                                     </p>
                                     
@@ -338,7 +338,7 @@ spec:
                                 <h2 class="section-title">Service</h2>
                                 <div class="section-block">
                                     <p>
-                                      it is a resource of kuberbetes that allows us to manage routing.<br>
+                                      it is a resource of kubernetes that allows us to manage routing.<br>
                                       There are mainly 2 type of services
                                       <ol>
                                         <li>External-ip</li>
@@ -375,7 +375,7 @@ spec:
                                 <h2 class="section-title">Probes</h2>
                                 <div class="section-block">
                                     <p>
-                                        Probe means to inspect,probe checks our application again and again afterv s spicific period of time to check if its is working correctly.
+                                        Probe means to inspect,probe checks our application again and again after specific period of time to check if it is working correctly.
                                         <br>link to official documentation of probes <a target="_blank" href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">link</a>
                                         <br> There are <b>2 types</b> of Probes
                                         <ol>
@@ -390,7 +390,7 @@ spec:
                                             <div class="code-block">
                                                 <h4>Liveness probe</h4>
                                                 <p>
-                                                    liveness probe checks our application again and again after a spicific period of time to check if its is working correctly
+                                                    liveness probe checks our application again and again after a spicific period of time to check if it is working correctly
                                                     <br>If it fails it restarts the container. 
                                                     <br>There are <b>3 types of liveness</b> probe
                                                     <ol>
@@ -489,8 +489,8 @@ spec:
                                 <h2 class="section-title">Volumes</h2>
                                 <div class="section-block">
                                     <p>
-                                      actually it is <b>not a resource</b> of kuberbetes it is mostly written or defined in the <b>spec:</b> of Pods.<br>
-                                      it actually helps us to share data between containers or whole cluster, not only that but also allow us to retain data if the pod or the container is deleted. r you can say that it store & share data on the <b>pod level</b><br>
+                                      actually it is <b>not a resource</b> of kubernetes it is mostly written or defined in the <b>spec:</b> of Pods.<br>
+                                      it actually helps us to share data between containers or whole cluster, not only that but also allow us to retain data if the pod or the container is deleted. you can say that it store & share data on the <b>pod level</b><br>
                                       there are many types of volumes.
                                       <ul>
                                         <li>empty dir</li>
@@ -689,7 +689,7 @@ spec:
                                 <h2 class="section-title">Others</h2>
                                 <div class="section-block">
                                     <p>
-                                        Properties of kuberbetes resources that can be added to any resource.
+                                        Properties of kubernetes resources that can be added to any resource.
                                     </p>
                                 </div>
                                 <div id="Labels" class="section-block">
@@ -724,7 +724,7 @@ spec:
                                   <div class="code-block">
                                       <h4>Output | Info | Description about a resource</h4>
                                       <p>
-                                        This command helps to get information about any resource in kubenetes in json or yaml formet.
+                                        This command helps to get information about any resource in kubernetes in json or yaml format.
                                         <br>it is mostly used to debug a resource. 
                                       </p>
                                       <h6>output of a resource</h6>
@@ -737,7 +737,7 @@ spec:
                                     <div class="code-block">
                                         <h4>Edit a resource during runtime</h4>
                                         <p>
-                                          This command helps to change or dit configuration or properties of a resource while it is running. 
+                                          This command helps to change or edit configuration or properties of a resource while it is running. 
                                         </p>
                                         <h6>Edit a resource</h6>
                                         <pre><code class="language-git">kubectl edit &lt;resource-type> &lt;resource-name></code></pre>
