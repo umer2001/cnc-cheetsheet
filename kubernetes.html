@@ -470,16 +470,16 @@ spec:
                                                       <li>exec => executes a command in the application container to check if it is hanged</li>
                                                   </ol>
                                               </p>
-                                              <div class="callout-block callout-info">
-                                                <div class="icon-holder">
-                                                    <i class="fas fa-bullhorn"></i>
-                                                </div><!--//icon-holder-->
-                                                <div class="content">
-                                                    <h4 class="callout-title">Note:</h4>
-                                                    <p>All 3 templates are same as the liveness probe <b>except:</b>
-                                                    <br>use <code>readinessProbe:</code> instead of <code>livenessProbe:</code></p>
-                                                </div><!--//content-->
-                                            </div><!--//callout-->
+                                                <div class="callout-block callout-info">
+                                                    <div class="icon-holder">
+                                                        <i class="fas fa-bullhorn"></i>
+                                                    </div><!--//icon-holder-->
+                                                    <div class="content">
+                                                        <h4 class="callout-title">Note:</h4>
+                                                        <p>All 3 templates are same as the liveness probe <b>except:</b>
+                                                        <br>use <code>readinessProbe:</code> instead of <code>livenessProbe:</code></p>
+                                                    </div><!--//content-->
+                                                </div><!--//callout-->
                                             </div><!--//code-block-->
                                         </div><!--//section-block-->
                                     </li>
@@ -598,7 +598,7 @@ spec:
                               </div><!--//section-block-->
                             </section><!--//doc-section-->
                             <section id="conf-deployment" class="doc-section">
-                                <h2 class="section-title">Configuration & Deployment</h2>
+                                <h2 class="section-title">Configuration</h2>
                                 <div class="section-block">
                                     <p>
                                       In this section we will see tools for configuration and deployments provided by kubernetes.
@@ -639,12 +639,12 @@ spec:
       name: &lt;confifMap-name>
   containers:
   - name: &lt;container-name>
-      image: &lt;image>
-      ports:
-      - containerPort: 80 
-      volumeMounts:
-      - name: &lt;volume-name>
-          mountPath: /path/to/mount
+    image: &lt;image>
+    ports:
+    - containerPort: 80 
+    volumeMounts:
+    - name: &lt;volume-name>
+      mountPath: /path/to/mount
                                                         
                                                     </code></pre>
                                                 </li>
@@ -682,6 +682,119 @@ spec:
                                             </ol>
                                         </p>
                                         
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Secret" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Secret</h4>
+                                        <p>
+                                            It is a resource that can hold some <b>secret</b> configurations that your app needs to run such as api keys, passwords, access tokens etc<br>
+                                            There are two types of secets. 
+                                            <ol>
+                                                <li>One that can be made as text file and can be mounted on a pod as volume</li>
+                                                <li>One that can be made as env file and can be attached to a pod</li>
+                                            </ol>
+                                        </p>
+                                        <h6>Secret using cmd</h6>
+                                        <pre><code class="language-git">kubectl create secret generic &lt;resource-name> --from-literal=&lt;key1>=&lt;val1> --from-literal=&lt;key2>=&lt;val2></code></pre>
+                                        <div class="callout-block callout-info">
+                                            <div class="icon-holder">
+                                                <i class="fas fa-bullhorn"></i>
+                                            </div><!--//icon-holder-->
+                                            <div class="content">
+                                                <h4 class="callout-title">Note:</h4>
+                                                <p>Method to write and create secreat env or txt file are same as configMap.<br><b>except:</b>
+                                                <h5 class="callout-title">when using env file:</h5>
+                                                <ul>
+                                                    <li>use <code>secretRef:</code> instead of <code>configMapRef:</code> when creating Pod through <b>env</b> file.</li>
+                                                    <li>use <code>kubectl create secret generic &lt;resource-name> from-env-file=&lt;file-name.env></code> command when creating through <b>env</b> file.</li>
+                                                </ul>
+                                                <br>
+                                                <h5 class="callout-title">when using txt file:</h5>
+                                                <ul>
+                                                    <li>use <code>secret:</code> instead of <code>configMap:</code> & <code>secretName:</code> instead of <code>name:</code> when creating Pod through <b>txt</b> file.</li>
+                                                    <li>use <code>kubectl create secret generic &lt;resource-name> from-file=&lt;file-name.txt></code> command when creating through <b>txt</b> file.</li>
+
+                                                </ul></p>
+                                            </div><!--//content-->
+                                        </div><!--//callout-->
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="deployment" class="doc-section">
+                                <h2 class="section-title">Deployment</h2>
+                                <div class="section-block">
+                                    <p>
+                                      It is a resource of kuberenetes that helps us to deploy <b>update</b> application very easily by providing some strategies.
+                                      <br>basically it makes a replica-set and manages that. it does not interact with any pod directly. <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">link to documentation</a> 
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="deploy-template" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Deployment basic template</h6>
+                                        
+                                                    <pre><code class="language-markup">
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &lt;deployment-name>
+  labels: #optional
+    &lt;key>: &lt;value>
+spec:
+  replicas: &lt;number-of-pods>
+  selector: #optional
+    matchLabels:
+      &lt;key>: &lt;value>
+  template:
+    metadata:
+      labels: #optional
+        &lt;key>: &lt;value>
+    spec:
+      containers:
+      - name: &lt;container-name>
+        image: &lt;image>
+        ports:
+        - containerPort: 80
+  strategy:
+    type: &lt;Recreate> or &lt;RollingUpdate>
+                                                        
+                                                    </code></pre>
+                                      <h5 id="Stratergies">Stratergies</h5>
+                                      <ul>
+                                        <li>
+                                          <h6>RollingUpdate</h6>
+                                          <p>
+                                            It is the default stratergy of kubernetes deployment, according to it when we update any thing one old pod is deleted and one updated pod is created this
+                                            process is repeated until all pods are replaced by newer version.
+                                            <br>we need to define some properties when using it. Those properties are listed below.
+                                            <ul>
+                                              <li>maxSurge ==> how many pods we can add at a time</li>
+                                              <li>maxUnavailable ==> maxUnavailable define how many pods can be unavailable during the rolling update</li>
+                                            </ul>
+                                            In the last it should look like:
+                                            <pre><code class=" language-markup">
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: &lt;any-number>
+    maxUnavailable: &lt;any-number>
+                                            </code></pre>
+                                          </p>
+                                        </li>
+                                        <li>
+                                          <h6>Recreate</h6>
+                                          <p>
+                                            In this strategy all pods all deleted at once and then newwer pods are created.<br>
+                                            in short your application have to face some down-time.
+                                            <br>In the last it should look like:
+                                            <pre><code class=" language-markup">
+strategy:
+  type: Recreate
+                                            </code></pre>
+                                          </p>
+                                        </li>
+                                      </ul>
+                                      Other info about deployment can be found on the officilal <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">link</a>.
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
@@ -801,6 +914,16 @@ spec:
                                     <a class="nav-link scrollto" href="#PVC-basic-template">PVC basic template</a>
                                     <a class="nav-link scrollto" href="#Pod-mounting-pv-basic-template">Pod mounting pv basic template</a>
                                 </nav>
+                                <a class="nav-link scrollto" href="#conf-deployment">Configuration</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                  <a class="nav-link scrollto" href="#ConfigMap">ConfigMap</a>
+                                  <a class="nav-link scrollto" href="#Secret">Secret</a>
+                                </nav>
+                              <a class="nav-link scrollto" href="#deployment">Deployment</a>
+                              <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#deploy-template">Deployment basic template</a>
+                                <a class="nav-link scrollto" href="#Stratergies">Stratergies</a>
+                              </nav>
                                 <a class="nav-link scrollto" href="#Others">Others</a>
                                 <nav class="doc-sub-menu nav flex-column">
                                     <a class="nav-link scrollto" href="#Labels">Labels</a>
