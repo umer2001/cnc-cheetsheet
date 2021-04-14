@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CNC Cheet Sheet theme for developers</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+      
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                            <span class="text-highlight">CNC</span><span class="text-bold">Cheet Sheet</span>
+                        </a>
+                    </h1>
+                    
+                </div><!--//branding-->
+                
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Azure</li>
+                </ol>
+                
+                <div class="top-search-box">
+                    <form id="srch" class="form-inline search-form justify-content-center" action="" method="get">
+	            
+			            <input id="data" type="text" placeholder="Enter search terms..." value="" class="form-control search-input">
+			            
+			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+			            
+			        </form>
+                </div>
+                
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><img  alt="Azure-icon" src="kbn.png"/> Azure Quick Start</h1>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="download-section" class="doc-section">
+                                <h2 class="section-title">Installation & Setup</h2>
+                                <div class="section-block">
+                                    <p>
+                                        When working with a tool like Azure it is very important to make a good friendship with its <b>documentation</b> <a href="https://Azure.io/docs/home/">link</a> <br>
+                                        to setup Azure we will need two main components
+                                        </p>
+                                        <ul>
+                                            <li>kubectl</li>
+                                            <li>minikube</li>
+                                            <li>virtual box(optional)</li>
+                                        </ul>
+                                    <p>
+                                        if you have any problem or error during the setup you can refer to google..... 
+                                    </p>
+                                    <a href="https://Azure.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux" class="btn btn-green" target="_blank"><i class="fas fa-download"></i> Setup guide for Azure</a>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="installation-section" class="doc-section">
+                                <h2 class="section-title">Installation</h2>
+                                <div id="step1"  class="section-block">
+                                    <h3 class="block-title">Step One</h3>
+                                    <p>
+                                        First we need to install kubectl through which we will manage Azure.<br>
+                                        if you are using linux just copy and paste these commands one by one.
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>sudo apt-get install curl</code></p>
+                                        <p><code>curl -LO https://storage.googleapis.com/Azure-release/release/`curl -s https://storage.googleapis.com/Azure-release/release/stable.txt`/bin/linux/amd64/kubectl</code></p>
+                                        <p><code>chmod +x ./kubectl</code></p>
+                                        <p><code>sudo mv ./kubectl /usr/local/bin/kubectl</code></p>
+                                        <p>To test run below command</p>
+                                        <p><code>kubectl version --client</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="step2"  class="section-block">
+                                    <h3 class="block-title">Step Two</h3>
+                                    <p>
+                                        Now  we will install minikube, when using minikube 8Gb RAM is recommended.<br>
+                                        if you are using linux then just copy and paste these commands one by one.
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64</code></p>
+                                        <p><code>chmod +x minikube</code></p>
+                                        <p><code>sudo mkdir -p /usr/local/bin/</code></p>
+                                        <p><code>sudo install minikube /usr/local/bin/</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="step3"  class="section-block">
+                                    <h3 class="block-title">Step Three</h3>
+                                    <p>
+                                        In this step we will install virtual box which is <b>optional</b>, if you want to use virtual box then make sure your machine supports virtualization <br>
+                                        To check that your system supports virtualization or not run the command below <br>
+                                        <code>grep -E --color 'vmx|svm' /proc/cpuinfo</code>
+                                        if this command returns some output then you are good to go else continue without install virtual box.
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>sudo apt-get update</code></p>
+                                        <p><code>sudo apt-get upgrade</code></p>
+                                        <p><code>wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</code></p>
+                                        <p><code>wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -</code></p>
+                                        <p><code>sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian xenial contrib"</code></p>
+                                        <p><code>sudo apt-get update</code></p>
+                                        <p><code>sudo apt-get install virtualbox</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="step4"  class="section-block">
+                                    <h3 class="block-title">Step Four</h3>
+                                    <p>
+                                        Lets check that we installed all 3 or 2 main tools correctly or not.<br>
+                                        Run the commands that is based on your criteria. <br>
+                                        if one fails because of any error use the command below and then try next command.
+                                        <code>minikube delete</code>
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>Commands:</h6>
+                                        <p><code>minikube start</code></p>
+                                        <p>above command will start minikube using virtual box</p>
+                                        <p><code>minikube start --driver=none</code></p>
+                                        <p>if you have not installed virtual box then use the above command, if it also not works the try the below command.</p>
+                                        <p><code>minikube start --driver=docker</code></p>
+                                        <p>above command will start minikube using docker</p>
+                                        <p>
+                                            If none of the above command worked for you then try adding <b>--force</b> flag to command <br>
+                                            example : <p><code>minikube start --driver=docker --force</code></p>
+                                        </p>
+                                    </div><!--//code-block-->
+                                    <h3>If minikube Starts</h3>
+                                    <p>If minikube starts then you can type the below command to get its status</p>
+                                    <p><code>minikube status</code></p>
+                                    <p>
+                                        this command will return result similler to <br>
+                                        host: Running
+                                        kubelet: Running
+                                        apiserver: Running
+                                    </p>
+                                    <p>Now its all set to us Azure :-)</p>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Pod" class="doc-section">
+                                <h2 class="section-title">Resource Group (RG)</h2>
+                                <div class="section-block">
+                                    <p>
+                                        it is like a container that can contain different azure resources, we usr RG to deploy resource according to some logical context
+                                    </p>
+                                    <h6>Important notes about RGs</h6>
+                                    <ul>
+                                        <li>If you delete a resource group all the resources in that RG will be deleted</li>
+                                    </ul>
+                                </div><!--//section-block-->
+                                <div id="Pod-basic-template" class="section-block">
+                                    <div class="code-block">
+                                        <h5>TODO:  RG basic template</h5>
+                                        <pre><code class="language-markup">
+kind: Pod
+apiVersion: v1
+metadata:
+  name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;image>
+    ports:
+    - containerPort: 80                                        </code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Pod-using-cmd" class="section-block">
+                                    <h5>RG using Azure cli</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-git">az group create \
+    --name "&lt;name of rg>" \
+    --location "location or region>"</code></pre>
+                                    </div>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Pod" class="doc-section">
+                                <h2 class="section-title">Virtual Machine (VM)</h2>
+                                <div class="section-block">
+                                    <p>
+                                        it is a resource of Azure similer to a windows or linux computer system. It is mostly used when an application requires a custom configuration or you want full control over the environment where your application is going to be deployed.<br />Below is the <b>minimum set of configuration</b> to deploy a vm
+                                    </p>
+                                    <h6>Important notes about VMs</h6>
+                                    <ul>
+                                        <li>vm is a resource</li>
+                                        <li>deployed in a resource group</li>
+                                        <li>vm size can be changed after deployment</li>
+                                        <li>steps : Rg->vm->vm ports->public ip</li>
+                                    </ul>
+                                </div><!--//section-block-->
+                                <div id="Pod-basic-template" class="section-block">
+                                    <div class="code-block">
+                                        <h5>TODO:  VM basic template</h5>
+                                        <pre><code class="language-markup">
+kind: Pod
+apiVersion: v1
+metadata:
+  name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;image>
+    ports:
+    - containerPort: 80                                        </code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Pod-using-cmd" class="section-block">
+                                    <h5>VM using Azure cli</h5>
+                                        <p>you can mainly make 2 types of vms</p>
+                                        <ul>
+                                        <li>windows vm</li>
+                                        <li>Linux vm</li>
+                                    </ul>
+                                    <div class="code-block">
+                                        
+                                    <h6>For Windows VM</h6>
+                                        <pre><code class="language-git">az vm create \
+    --resource-group "&lt;name of rg>" \
+    --name "&lt;name of vm>" \
+    --image "window" \
+    --admin-username "&lt;windows admin user-name>" \
+    --admin-password "&lt;windows admin password>"</code></pre>
+    <h6>For Linux VM</h6>
+    <pre><code class="language-git">az vm create \
+    --resource-group "&lt;name of rg>" \
+    --name "&lt;name of vm>" \
+    --image "Linux" \
+    --admin-username "&lt;linux admin user-name>" \
+    --authentication-type "ssh" \
+    --ssh-key-value &lt;path to .pub file></code></pre>
+                                    </div><!--//code-block-->
+                                    <p>After deploying a vm you may want to access it using RDP or ssh, for that you have to open the specific port on the newly created vm</p>
+                                    <div class="code-block">
+                                        <h6>opening port</h6>
+                                            <pre><code class="language-git">az vm open-port \
+    --resource-group "&lt;name of rg>" \
+    --name "&lt;name of vm>" \
+    --port "3389 or 22"</code></pre>
+                                        </div><!--//code-block-->
+                                        <p>
+                                            for loging in the vm you might also need the <b>public ip</b> of the vm for that you can use the command below
+                                        </p>
+                                        <div class="code-block">
+                                            <h6>accessing public ip</h6>
+                                                <pre><code class="language-git">az vm list-ip-addresses \
+    --resource-group "&lt;name of rg>" \
+    --name "&lt;name of vm>" \
+    -output table</code></pre>
+                                            </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="ReplicaSet" class="doc-section">
+                                <h2 class="section-title">ReplicaSet</h2>
+                                <div class="section-block">
+                                    <p>
+                                        it is a resource of Azure that maintain the number of currently running copies of a pod.
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="RSet-basic-template" class="section-block">
+                                    <div class="code-block">
+                                        <h6>ReplicaSet basic template</h6>
+                                        <pre><code class="language-markup">
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    name: frontend
+    labels:
+      app: guestbook
+spec:
+    # modify replicas according to your case
+    replicas: 3
+    selector:
+      matchLabels:
+        app: frontend
+    template:
+      metadata:
+          labels:
+            app: frontend
+      spec:
+        containers:
+        - name: &lt;container-name>
+          image: &lt;image>
+          ports:
+          - containerPort: 80</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="handlebars" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Ceate ReplicaSet</h6>
+                                        <pre><code class="language-git">kubectl create -f &lt;name of yaml file></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="List-ReplicaSet" class="section-block">
+                                    <div class="code-block">
+                                        <h6>List ReplicaSet</h6>
+                                        <pre><code class="language-git">kubectl get rs</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Scale-ReplicaSet" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Scale ReplicaSet</h6>
+                                        <p>it will increase or decrease the number of pods that are managed by a ReplicaSet</p>
+                                        <pre><code class="language-git">kubectl scale rs &lt;ReplicaSet-name> --replicas=&lt;desired-number></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Delete-ReplicaSet" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Delete ReplicaSet</h6>
+                                        <p>This command will <b>delete replicaset without deleting pods</b> generated by that replica set</p>
+                                        <pre><code class="language-git">kubectl delete rs &lt;Replicaset-name> --cascade=false</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Job" class="doc-section">
+                              <h2 class="section-title">Job</h2>
+                              <div class="section-block">
+                                  <p>
+                                      it is a resource of Azure that creates a pod that does a specific task and gets terminated.
+                                  </p>
+                                  
+                              </div><!--//section-block-->
+                              <div id="html" class="section-block">
+                                  <div class="code-block">
+                                      <h6>Job basic template</h6>
+                                      <pre><code class="language-markup">
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: &lt;job-name>
+spec:
+  template:
+    spec:
+      containers:
+      - name: &lt;container-name>
+        image: &lt;image>
+        command: ["echo",  "Hello world"]
+      restartPolicy: Never
+  backoffLimit: 4</code></pre>
+                                  </div><!--//code-block-->
+                              </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Cron-Job" class="doc-section">
+                                <h2 class="section-title">Cron Job</h2>
+                                <div class="section-block">
+                                    <p>
+                                        it is a resource of Azure that creates a job that can repeat after certain time.
+                                        <br> first it creats a job then a pod that does the specified work.
+                                    </p>
+                                    
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Cron job basic template</h6>
+                                        <pre><code class="language-markup">
+    apiVersion: batch/v1beta1
+    kind: CronJob
+    metadata:
+    name: &lt;cron job name>
+    spec:
+    schedule: "*/1 * * * *"
+    jobTemplate:   # job
+        spec:
+        template:  # pod template
+            spec:
+            containers:
+            - name: &lt;container-name>
+                image: &lt;image>
+                command: ["echo",  "Hello world"]
+            restartPolicy: OnFailure
+                                        </code></pre>
+                                    <p><b>Note :</b> here ***** reprisents minute | hour | day | month | year</p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Service" class="doc-section">
+                                <h2 class="section-title">Service</h2>
+                                <div class="section-block">
+                                    <p>
+                                      it is a resource of Azure that allows us to manage routing.<br>
+                                      There are mainly 2 type of services
+                                      <ol>
+                                        <li>External-ip</li>
+                                        <li>LoadBalancer</li>
+                                      </ol>
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="Service-basic-template" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Service basic template</h6>
+                                        <pre><code class="language-markup">
+apiVersion: v1
+kind: Service
+metadata:
+  name: &lt;service-name>
+spec:
+  selector:
+  &lt;label-key>: &lt;label-value>
+  ports:
+    - port: &lt;Pod-port>
+      targetPort: &lt;container-exposed-port>
+  type: LoadBalancer</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Service-using-cmd" class="section-block">
+                                  <div class="code-block">
+                                      <h6>Service using command line</h6>
+                                      <p>For this you should have a <b>ReplicaSet</b> managing one or more pods.</p>
+                                      <pre><code class="language-git">kubectl expose rs &lt;ReplicaSet-name> --name=&lt;Service-name> --selector=&lt;label-key>=&lt;label-value> --port=&lt;Pod-port> --target-port=&lt;container-exposed-port> --type=LoadBalancer</code></pre>
+                                  </div><!--//code-block-->
+                              </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Probes" class="doc-section">
+                                <h2 class="section-title">Probes</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Probe means to inspect,probe checks our application again and again after specific period of time to check if it is working correctly.
+                                        <br>link to official documentation of probes <a target="_blank" href="https://Azure.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">link</a>
+                                        <br> There are <b>2 types</b> of Probes
+                                        <ol>
+                                            <li>Liveness probe (re-starts the container if fails)</li>
+                                            <li>Readiness probe (restricts access to container if fails)</li>
+                                        </ol>
+                                    </p>
+                                </div><!--//section-block-->
+                                <ol>
+                                    <li>
+                                        <div id="Liveness-probe" class="section-block">
+                                            <div class="code-block">
+                                                <h4>Liveness probe</h4>
+                                                <p>
+                                                    liveness probe checks our application again and again after a spicific period of time to check if it is working correctly
+                                                    <br>If it fails it restarts the container. 
+                                                    <br>There are <b>3 types of liveness</b> probe
+                                                    <ol>
+                                                        <li>http get => sends a http request and checks for response</li>
+                                                        <li>tcp socket => tries to make connection on container port</li>
+                                                        <li>exec => executes a command in the application container to check if it is hanged</li>
+                                                    </ol>
+                                                </p>
+                                                <h6>HTTP GET basic template</h6>
+                                                <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+  &lt;key>: &lt;value>
+  name: &lt;Pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;container-image>
+    livenessProbe:
+      httpGet:
+        path: /   #root
+        port: &lt;Pod-port or container-port>
+      initialDelaySeconds: &lt;delay before first check>
+      periodSeconds: &lt;time to wait after each check>
+                                                </code></pre>
+                                                <h6>TCP socket basic template</h6>
+                                                <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;container-image>
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      tcpSocket:
+        port: &lt;container-port>
+      initialDelaySeconds: &lt;delay before first check>
+      periodSeconds: &lt;time to wait after each check>
+                                                </code></pre>
+                                                <h6>EXEC basic template</h6>
+                                                <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;container-image>
+    livenessProbe:
+      exec:
+        command:
+        - &lt;command eg: ls>
+      initialDelaySeconds: &lt;delay before first check>
+      periodSeconds: &lt;time to wait after each check>
+                                                </code></pre>
+                                            </div><!--//code-block-->
+                                        </div><!--//section-block-->
+                                    </li>
+                                    <li>
+                                        <div id="Readiness-probe" class="section-block">
+                                            <div class="code-block">
+                                                <h4>Readiness probe</h4>
+                                                <p>
+                                                  Readiness checks our application again and again after a spicific period of time to check if its is working correctly
+                                                  <br>If it fails it restricts access to container. 
+                                                  <br>There are <b>3 types of readiness</b> probe
+                                                  <ol>
+                                                      <li>http get => sends a http request and checks for response</li>
+                                                      <li>tcp socket => tries to make connection on container port</li>
+                                                      <li>exec => executes a command in the application container to check if it is hanged</li>
+                                                  </ol>
+                                              </p>
+                                                <div class="callout-block callout-info">
+                                                    <div class="icon-holder">
+                                                        <i class="fas fa-bullhorn"></i>
+                                                    </div><!--//icon-holder-->
+                                                    <div class="content">
+                                                        <h4 class="callout-title">Note:</h4>
+                                                        <p>All 3 templates are same as the liveness probe <b>except:</b>
+                                                        <br>use <code>readinessProbe:</code> instead of <code>livenessProbe:</code></p>
+                                                    </div><!--//content-->
+                                                </div><!--//callout-->
+                                            </div><!--//code-block-->
+                                        </div><!--//section-block-->
+                                    </li>
+                                </ol>
+                            </section><!--//doc-section-->
+                            <section id="Volumes" class="doc-section">
+                                <h2 class="section-title">Volumes</h2>
+                                <div class="section-block">
+                                    <p>
+                                      actually it is <b>not a resource</b> of Azure it is mostly written or defined in the <b>spec:</b> of Pods.<br>
+                                      it actually helps us to share data between containers or whole cluster, not only that but also allow us to retain data if the pod or the container is deleted. you can say that it store & share data on the <b>pod level</b><br>
+                                      there are many types of volumes.
+                                      <ul>
+                                        <li>empty dir</li>
+                                        <li>configmam, secret, downward API</li>
+                                        <li>presistant vloumes</li>
+                                        <li>git repo</li>
+                                        <li>gce presistant disk</li>
+                                        <li>aws Elastic block storage</li>
+                                        <li>Azure disk</li>
+                                      </ul>
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="html" class="section-block">
+                                    <div class="code-block">
+                                        <h6>emptyDir volume basic template</h6>
+                                        <p>it is usually used to share data b/w two or more containers in a single pod, as it makes a directory shared b/w containers.</p>
+                                        <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  volumes:
+  - name: &lt;volume-name>
+    emptyDir: {}
+  containers:
+  - image: &lt;container-image>
+    name: &lt;container-name>
+    volumeMounts:
+    - mountPath: &lt;path>   #path of dir to share
+      name: &lt;volume-name>    #that is mentioned above
+  - image: &lt;container-image>
+    name: &lt;container-name>
+    volumeMounts:
+    - mountPath: &lt;path>   #path of dir to share
+      name: &lt;volume-name>    #that is mentioned above</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="persistent-Volumes" class="doc-section">
+                              <h2 class="section-title">persistent Volumes</h2>
+                              <div class="section-block">
+                                  <p>
+                                    presistant volumes are a little different than other volumes as the store & share data on the <b>cluster level</b><br>
+                                    it also works a little differently. Below are the steps to use and work with persistent volume (pv).
+                                    <ol>
+                                      <li>Make a persistent volume (pv)</li>
+                                      <li>Make a persistent volume claim (pvc)</li>
+                                      <li>Mount it in a pod as volume using (pvc)</li>
+                                    </ol>
+                                  </p>
+                              </div><!--//section-block-->
+                              <div id="PV-basic-template" class="section-block">
+                                  <div class="code-block">
+                                      <h6>persistent Volume basic template</h6>
+                                      <p>you can access host file system by <code>minikube ssh</code> command</p>
+                                      <pre><code class="language-markup">
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: &lt;pv-name>
+spec:
+  capacity:
+    storage: &lt;storage size eg: 5Gi>
+  hostPath:
+    path: &lt;path> #pth where to store data on cluster
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: &lt;Recycle or Retain or Delete></code></pre>
+                                  </div><!--//code-block-->
+                                  <div id="PVC-basic-template" class="code-block">
+                                    <h6>persistent Volume claim basic template</h6>
+                                    <pre><code class="language-markup">
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: &lt;pvc-name>
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: &lt;storage size eg: 100M>
+  storageClassName: ""</code></pre>
+                                </div><!--//code-block-->
+                                <div id="Pod-mounting-pv-basic-template" class="code-block">
+                                  <h6>Pod mounting persistent Volume basic template</h6>
+                                  <pre><code class="language-markup">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: &lt;pod-name>
+spec:
+  volumes:
+    - name: &lt;volume-name>
+      persistentVolumeClaim:
+        claimName: &lt;pvc-name>    #use pvc name that you have created
+  containers:
+    - name: &lt;container-name>
+      image: &lt;container-image>
+      volumeMounts:
+      - mountPath: &lt;path>    #path of dir to share
+        name: &lt;volume-name>    #that is mentioned above</code></pre>
+                              </div><!--//code-block-->
+                              </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="conf-deployment" class="doc-section">
+                                <h2 class="section-title">Configuration</h2>
+                                <div class="section-block">
+                                    <p>
+                                      In this section we will see tools for configuration and deployments provided by Azure.
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="ConfigMap" class="section-block">
+                                    <div class="code-block">
+                                        <h4>ConfigMap</h4>
+                                        <p>
+                                            It is a resource that can hold some configurations of your application so that you don't have to mess with application code to make some configuration changes<br>
+                                            There are two types of config map. 
+                                            <ol>
+                                                <li>One that can be made as text file and can be mounted on a pod as volume</li>
+                                                <li>One that can be made as env file and can be attached to a pod</li>
+                                            </ol>
+                                        </p>
+                                        <h6>Config map using cmd</h6>
+                                        <pre><code class="language-git">kubectl create configmap &lt;resource-name> --from-literal=&lt;key1>=&lt;val1> --from-literal=&lt;key2>=&lt;val2></code></pre>
+                                        <h6>Config map using txt file</h6>
+                                        <p>
+                                            <ol>
+                                                <li>create a text file abc.txt</li>
+                                                <li>write : <br>ke1=value1<br>ke2=value2</li>
+                                                <li>save the file.</li>
+                                                <li>use command <pre><code class="language-git">kubectl create cm &lt;resource-name> from-file=&lt;file-name.txt></code></pre></li>
+                                                <li>
+                                                    now mount it on pod as volume<br>
+                                                    <b>Template</b><br>
+                                                    <pre><code class=" language-markup">
+kind: Pod
+apiVersion: v1
+metadata:
+  name: &lt;pod-name>
+spec:
+  volumes:
+  - name: &lt;volume-name>
+  configMap:
+      name: &lt;confifMap-name>
+  containers:
+  - name: &lt;container-name>
+    image: &lt;image>
+    ports:
+    - containerPort: 80 
+    volumeMounts:
+    - name: &lt;volume-name>
+      mountPath: /path/to/mount
+                                                        
+                                                    </code></pre>
+                                                </li>
+                                                <li>create this pod any you are done.</li>
+                                            </ol>
+                                        </p>
+                                        <h6>Config map using env file</h6>
+                                        <p>
+                                            <ol>
+                                                <li>create a text file abc.env</li>
+                                                <li>write : <br>ke1=value1<br>ke2=value2</li>
+                                                <li>save the file.</li>
+                                                <li>use command <pre><code class="language-git">kubectl create cm &lt;resource-name> from-env-file=&lt;file-name.env></code></pre></li>
+                                                <li>
+                                                    link a pod with configMap<br>
+                                                    <b>Template</b><br>
+                                                    <pre><code class=" language-markup">
+kind: Pod
+apiVersion: v1
+metadata:
+    name: &lt;pod-name>
+spec:
+  containers:
+  - name: &lt;container-name>
+    image: &lt;image>
+    ports:
+    - containerPort: 80
+    envFrom:
+    - configMapRef:
+        name: &lt;configMap-name>
+                                                        
+                                                    </code></pre>
+                                                </li>
+                                                <li>create this pod any you are done.</li>
+                                            </ol>
+                                        </p>
+                                        
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Secret" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Secret</h4>
+                                        <p>
+                                            It is a resource that can hold some <b>secret</b> configurations that your app needs to run such as api keys, passwords, access tokens etc<br>
+                                            There are two types of secets. 
+                                            <ol>
+                                                <li>One that can be made as text file and can be mounted on a pod as volume</li>
+                                                <li>One that can be made as env file and can be attached to a pod</li>
+                                            </ol>
+                                        </p>
+                                        <h6>Secret using cmd</h6>
+                                        <pre><code class="language-git">kubectl create secret generic &lt;resource-name> --from-literal=&lt;key1>=&lt;val1> --from-literal=&lt;key2>=&lt;val2></code></pre>
+                                        <div class="callout-block callout-info">
+                                            <div class="icon-holder">
+                                                <i class="fas fa-bullhorn"></i>
+                                            </div><!--//icon-holder-->
+                                            <div class="content">
+                                                <h4 class="callout-title">Note:</h4>
+                                                <p>Method to write and create secreat env or txt file are same as configMap.<br><b>except:</b>
+                                                <h5 class="callout-title">when using env file:</h5>
+                                                <ul>
+                                                    <li>use <code>secretRef:</code> instead of <code>configMapRef:</code> when creating Pod through <b>env</b> file.</li>
+                                                    <li>use <code>kubectl create secret generic &lt;resource-name> from-env-file=&lt;file-name.env></code> command when creating through <b>env</b> file.</li>
+                                                </ul>
+                                                <br>
+                                                <h5 class="callout-title">when using txt file:</h5>
+                                                <ul>
+                                                    <li>use <code>secret:</code> instead of <code>configMap:</code> & <code>secretName:</code> instead of <code>name:</code> when creating Pod through <b>txt</b> file.</li>
+                                                    <li>use <code>kubectl create secret generic &lt;resource-name> from-file=&lt;file-name.txt></code> command when creating through <b>txt</b> file.</li>
+
+                                                </ul></p>
+                                            </div><!--//content-->
+                                        </div><!--//callout-->
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="deployment" class="doc-section">
+                                <h2 class="section-title">Deployment</h2>
+                                <div class="section-block">
+                                    <p>
+                                      It is a resource of kuberenetes that helps us to deploy <b>update</b> application very easily by providing some strategies.
+                                      <br>basically it makes a replica-set and manages that. it does not interact with any pod directly. <a href="https://Azure.io/docs/concepts/workloads/controllers/deployment/">link to documentation</a> 
+                                    </p>
+                                </div><!--//section-block-->
+                                <div id="deploy-template" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Deployment basic template</h6>
+                                        
+                                                    <pre><code class="language-markup">
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &lt;deployment-name>
+  labels: #optional
+    &lt;key>: &lt;value>
+spec:
+  replicas: &lt;number-of-pods>
+  selector: #optional
+    matchLabels:
+      &lt;key>: &lt;value>
+  template:
+    metadata:
+      labels: #optional
+        &lt;key>: &lt;value>
+    spec:
+      containers:
+      - name: &lt;container-name>
+        image: &lt;image>
+        ports:
+        - containerPort: 80
+  strategy:
+    type: &lt;Recreate> or &lt;RollingUpdate>
+                                                        
+                                                    </code></pre>
+                                      <h5 id="Stratergies">Stratergies</h5>
+                                      <ul>
+                                        <li>
+                                          <h6>RollingUpdate</h6>
+                                          <p>
+                                            It is the default stratergy of Azure deployment, according to it when we update any thing one old pod is deleted and one updated pod is created this
+                                            process is repeated until all pods are replaced by newer version.
+                                            <br>we need to define some properties when using it. Those properties are listed below.
+                                            <ul>
+                                              <li>maxSurge ==> how many pods we can add at a time</li>
+                                              <li>maxUnavailable ==> maxUnavailable define how many pods can be unavailable during the rolling update</li>
+                                            </ul>
+                                            In the last it should look like:
+                                            <pre><code class=" language-markup">
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: &lt;any-number>
+    maxUnavailable: &lt;any-number>
+                                            </code></pre>
+                                          </p>
+                                        </li>
+                                        <li>
+                                          <h6>Recreate</h6>
+                                          <p>
+                                            In this strategy all pods all deleted at once and then newwer pods are created.<br>
+                                            in short your application have to face some down-time.
+                                            <br>In the last it should look like:
+                                            <pre><code class=" language-markup">
+strategy:
+  type: Recreate
+                                            </code></pre>
+                                          </p>
+                                        </li>
+                                      </ul>
+                                      Other info about deployment can be found on the officilal <a href="https://Azure.io/docs/concepts/workloads/controllers/deployment/">link</a>.
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="Others" class="doc-section">
+                                <h2 class="section-title">Others</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Properties of Azure resources that can be added to any resource.
+                                    </p>
+                                </div>
+                                <div id="Labels" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Labels</h4>
+                                        <p>
+                                            labels are key:value pair that help us to group different resources, we can perform different opperations on those resources using labels.<br>
+                                            labels are defined under metadata of a resource. There can be one or more labels of a resource.<br>
+                                            e.g type: frontend
+                                        </p>
+                                        <h6>Add label to running resource</h6>
+                                        <pre><code class="language-git">kubectl label &lt;resource-type> &lt;resource-name> &lt;key>=&lt;value></code></pre>
+                                        <h6>Remove label from a resource</h6>
+                                        <pre><code class="language-git">kubectl label &lt;resource-type> &lt;resource-name> &lt;key>-</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Annotations" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Annotations</h4>
+                                        <p>
+                                            Annotations are also key:value pair but it is used to give a describe a resource or give any information about the resource.<br>
+                                            annotations are also defined under metadata of a resource. There can be one or more labels of a resource.<br>
+                                            e.g purpose: "this resource can do _____ work"
+                                        </p>
+                                        <h6>Add annotation to running resource</h6>
+                                        <pre><code class="language-git">kubectl annotate &lt;resource-type> &lt;resource-name> &lt;key>="&lt;value>"</code></pre>
+                                        <h6>Remove annotation from a resource</h6>
+                                        <pre><code class="language-git">kubectl annotate &lt;resource-type> &lt;resource-name> &lt;key>-</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Description-about-a-resource" class="section-block">
+                                  <div class="code-block">
+                                      <h4>Output | Info | Description about a resource</h4>
+                                      <p>
+                                        This command helps to get information about any resource in Azure in json or yaml format.
+                                        <br>it is mostly used to debug a resource. 
+                                      </p>
+                                      <h6>output of a resource</h6>
+                                      <pre><code class="language-git">kubectl get &lt;resource-type> &lt;resource-name> -o &lt;formet json or yaml></code></pre>
+                                      <h6>short useful description</h6>
+                                      <pre><code class="language-git">kubectl describe &lt;resource-type> &lt;resource-name></code></pre>
+                                  </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="Edit-a-resource-during-runtime" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Edit a resource during runtime</h4>
+                                        <p>
+                                          This command helps to change or edit configuration or properties of a resource while it is running. 
+                                        </p>
+                                        <h6>Edit a resource</h6>
+                                        <pre><code class="language-git">kubectl edit &lt;resource-type> &lt;resource-name></code></pre>
+                                    </div><!--//code-block-->
+                                  </div><!--//section-block-->
+                                <div id="Delete-a-resource" class="section-block">
+                                    <div class="code-block">
+                                        <h4>Delete a resource</h4>
+                                        <p>
+                                        This command deletes a resource. 
+                                        </p>
+                                        <h6>Delete a resource</h6>
+                                        <pre><code class="language-git">kubectl delete &lt;resource-type> &lt;resource-name></code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+	                        
+                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <a class="nav-link scrollto" href="#download-section">Download</a>
+                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#step1">Step One</a>
+                                    <a class="nav-link scrollto" href="#step2">Step Two</a>
+                                    <a class="nav-link scrollto" href="#step3">Step Three</a>
+                                    <a class="nav-link scrollto" href="#step4">Step Four</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#Pod">VM</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Pod-basic-template">VM basic template</a>
+                                    <a class="nav-link scrollto" href="#Pod-using-cmd">VM using azure cli</a>
+                                    <a class="nav-link scrollto" href="#Port-forward-pod">Opening Port</a>
+                                    <a class="nav-link scrollto" href="#List-pods">List public ip</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#ReplicaSet">ReplicaSet</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#RSet-basic-template">RSet basic template</a>
+                                    <a class="nav-link scrollto" href="#List-ReplicaSet">List ReplicaSet</a>
+                                    <a class="nav-link scrollto" href="#Scale-ReplicaSet">Scale ReplicaSet</a>
+                                    <a class="nav-link scrollto" href="#Delete-ReplicaSet">Delete ReplicaSet</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#Job">Job</a>
+                                <a class="nav-link scrollto" href="#Cron-Job">Cron Job</a>
+                                <a class="nav-link scrollto" href="#Service">Service</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Service-basic-template">Service basic template</a>
+                                    <a class="nav-link scrollto" href="#Service-using-cmd">Service using cmd</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#Probes">Probes</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Liveness-probe">Liveness probe</a>
+                                    <a class="nav-link scrollto" href="#Readiness-probe">Readiness probe</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#Volumes">Volumes</a>
+                                <a class="nav-link scrollto" href="#persistent-Volumes">persistent Volumes</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#PV-basic-template">PV basic template</a>
+                                    <a class="nav-link scrollto" href="#PVC-basic-template">PVC basic template</a>
+                                    <a class="nav-link scrollto" href="#Pod-mounting-pv-basic-template">Pod mounting pv basic template</a>
+                                </nav>
+                                <a class="nav-link scrollto" href="#conf-deployment">Configuration</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                  <a class="nav-link scrollto" href="#ConfigMap">ConfigMap</a>
+                                  <a class="nav-link scrollto" href="#Secret">Secret</a>
+                                </nav>
+                              <a class="nav-link scrollto" href="#deployment">Deployment</a>
+                              <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#deploy-template">Deployment basic template</a>
+                                <a class="nav-link scrollto" href="#Stratergies">Stratergies</a>
+                              </nav>
+                                <a class="nav-link scrollto" href="#Others">Others</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#Labels">Labels</a>
+                                    <a class="nav-link scrollto" href="#Annotations">Annotations</a>
+                                    <a class="nav-link scrollto" href="#Description-about-a-resource">Description about a resource</a>
+                                    <a class="nav-link scrollto" href="#Edit-a-resource-during-runtime">Edit a resource during runtime</a>
+                                    <a class="nav-link scrollto" href="#Delete-a-resource">Delete a resource</a>
+                                </nav>
+                            </nav><!--//doc-menu-->
+	                        
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper--> 
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://github.com/umer2001" target="_blank">Umer Farooq</a> for developers</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+</body>
+</html>
