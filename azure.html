@@ -372,83 +372,84 @@
                 </section>
                 <!--//doc-section-->
                 <section id="ReplicaSet" class="doc-section">
-                  <h2 class="section-title">ReplicaSet</h2>
+                  <h2 class="section-title">Azure Container Registry (ACR)</h2>
                   <div class="section-block">
                     <p>
-                      it is a resource of Azure that maintain the number of
-                      currently running copies of a pod.
+                      It isAzure resource used as a private container image
+                      repository.
                     </p>
-                  </div>
-                  <!--//section-block-->
-                  <div id="RSet-basic-template" class="section-block">
-                    <div class="code-block">
-                      <h6>ReplicaSet basic template</h6>
-                      <pre><code class="language-markup">
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-    name: frontend
-    labels:
-      app: guestbook
-spec:
-    # modify replicas according to your case
-    replicas: 3
-    selector:
-      matchLabels:
-        app: frontend
-    template:
-      metadata:
-          labels:
-            app: frontend
-      spec:
-        containers:
-        - name: &lt;container-name>
-          image: &lt;image>
-          ports:
-          - containerPort: 80</code></pre>
-                    </div>
-                    <!--//code-block-->
-                  </div>
-                  <!--//section-block-->
-                  <div id="handlebars" class="section-block">
-                    <div class="code-block">
-                      <h6>Ceate ReplicaSet</h6>
-                      <pre><code class="language-git">kubectl create -f &lt;name of yaml file></code></pre>
-                    </div>
-                    <!--//code-block-->
-                  </div>
-                  <!--//section-block-->
-                  <div id="List-ReplicaSet" class="section-block">
-                    <div class="code-block">
-                      <h6>List ReplicaSet</h6>
-                      <pre><code class="language-git">kubectl get rs</code></pre>
-                    </div>
-                    <!--//code-block-->
-                  </div>
-                  <!--//section-block-->
-                  <div id="Scale-ReplicaSet" class="section-block">
-                    <div class="code-block">
-                      <h6>Scale ReplicaSet</h6>
+                    <h6>Important notes about VMs</h6>
+                    <ul>
+                      <li>ACR is a resource</li>
+                      <li>deployed in a resource group</li>
+                      <li>build, store & manage images</li>
+                      <li>
+                        steps : Rg->ACR->ACR login->push image or code to build
+                        image
+                      </li>
+                      <li>
+                        use <b>headless authentication</b> for intigrating with
+                        other applications for automation
+                      </li>
+                    </ul>
+                    <div id="Pod-using-cmd" class="section-block">
+                      <h4>ACR using Azure cli</h4>
+                      <div class="code-block">
+                        <pre><code class="language-git">az acr create \
+      --resource-group "&lt;name of rg>" \
+      --name "&lt;name of ACR globally unique>" \
+      --sku "Basic, Standard or Premium"</code></pre>
+                        <h5>Login to ACR</h5>
+                        <pre><code class="language-git">az acr login --name "&lt;name of ACR>"</code></pre>
+                      </div>
+                      <!--//code-block-->
                       <p>
-                        it will increase or decrease the number of pods that are
-                        managed by a ReplicaSet
+                        After logging in you may want to <b>Push an Image</b> or
+                        <b>Push the code</b> to build image usung ACR tasks
                       </p>
-                      <pre><code class="language-git">kubectl scale rs &lt;ReplicaSet-name> --replicas=&lt;desired-number></code></pre>
-                    </div>
-                    <!--//code-block-->
-                  </div>
-                  <!--//section-block-->
-                  <div id="Delete-ReplicaSet" class="section-block">
-                    <div class="code-block">
-                      <h6>Delete ReplicaSet</h6>
+                      <h5>Push image to ACR</h5>
+                      <div class="code-block">
+                        <h6>Get login server (URL or domain)</h6>
+                        <pre><code class="language-git">az acr show \
+      --name "&lt;name of ACR>" \
+      --query loginServer \
+      --output table</code></pre>
+                      </div>
+                      <!--//code-block-->
+                      <div class="code-block">
+                        <h6>Tag the image</h6>
+                        <p>
+                          you need to tag the image with login server to tell it
+                          where to upload.
+                        </p>
+                        <pre><code class="language-git">docker tag &lt;image id> &lt;login server>/&lt;image name>:&lt;tag></code></pre>
+                      </div>
+                      <!--//code-block-->
+                      <div class="code-block">
+                        <h6>Push the image</h6>
+                        <pre><code class="language-git">docker push &lt;login server>/&lt;image name>:&lt;tag></code></pre>
+                      </div>
+                      <!--//code-block-->
+                      <h5>Push Code to ACR</h5>
                       <p>
-                        This command will
-                        <b>delete replicaset without deleting pods</b> generated
-                        by that replica set
+                        push the code to build the image in ACR using ACR tasks
                       </p>
-                      <pre><code class="language-git">kubectl delete rs &lt;Replicaset-name> --cascade=false</code></pre>
+                      <div class="code-block">
+                        <pre><code class="language-git">az acr build 
+      --image "&lt;name of future image>:"&lt;tag>" \
+      --registry "&lt;ACR name>" \
+      "&lt;path to Dockerfile>"</code></pre>
+                      </div>
+                      <h5>List images in ACR</h5>
+                      <div class="code-block">
+                        <pre><code class="language-git">az acr repository list --name "&lt;name of ACR>" --output table</code></pre>
+                      </div>
+                      <!--//code-block-->
+                      <div class="code-block">
+                        <pre><code class="language-git">az acr repository show-tags list --name "&lt;name of ACR>" --repository "&lt;name of repository or image>" --output table</code></pre>
+                      </div>
+                      <!--//code-block-->
                     </div>
-                    <!--//code-block-->
                   </div>
                   <!--//section-block-->
                 </section>
