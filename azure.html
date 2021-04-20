@@ -258,7 +258,7 @@
                   <!--//section-block-->
                 </section>
                 <!--//doc-section-->
-                <section id="Pod" class="doc-section">
+                <section id="RG" class="doc-section">
                   <h2 class="section-title">Resource Group (RG)</h2>
                   <div class="section-block">
                     <p>
@@ -280,7 +280,7 @@
                     </ul>
                   </div>
                   <!--//section-block-->
-                  <div id="Pod-using-cmd" class="section-block">
+                  <div id="rg-using-cli" class="section-block">
                     <h5>RG using Azure cli</h5>
                     <div class="code-block">
                       <pre><code class="language-git">az group create \
@@ -291,7 +291,7 @@
                   <!--//section-block-->
                 </section>
                 <!--//doc-section-->
-                <section id="Pod" class="doc-section">
+                <section id="VM" class="doc-section">
                   <h2 class="section-title">Virtual Machine (VM)</h2>
                   <div class="section-block">
                     <p>
@@ -316,7 +316,7 @@
                     </ul>
                   </div>
                   <!--//section-block-->
-                  <div id="Pod-using-cmd" class="section-block">
+                  <div id="vm-using-cli" class="section-block">
                     <h5>VM using Azure cli</h5>
                     <p>you can mainly make 2 types of vms</p>
                     <ul>
@@ -346,7 +346,7 @@
                       or ssh, for that you have to open the specific port on the
                       newly created vm
                     </p>
-                    <div class="code-block">
+                    <div id="vm-open-port" class="code-block">
                       <h6>opening port</h6>
                       <pre><code class="language-git">az vm open-port \
     --resource-group "&lt;name of rg>" \
@@ -359,7 +359,7 @@
                       <b>public ip</b> of the vm for that you can use the
                       command below
                     </p>
-                    <div class="code-block">
+                    <div id="vm-public-ip" class="code-block">
                       <h6>accessing public ip</h6>
                       <pre><code class="language-git">az vm list-ip-addresses \
     --resource-group "&lt;name of rg>" \
@@ -371,10 +371,15 @@
                   <!--//section-block-->
                 </section>
                 <!--//doc-section-->
-                <section id="ReplicaSet" class="doc-section">
+                <section id="ACR" class="doc-section">
                   <h2 class="section-title">Azure Container Registry (ACR)</h2>
                   <div class="section-block">
                     <p>
+                      <a
+                        href="https://docs.microsoft.com/en-us/azure/container-registry/"
+                        target="_blank"
+                        >Link to official docs</a
+                      ><br />
                       It isAzure resource used as a private container image
                       repository.
                     </p>
@@ -392,7 +397,7 @@
                         other applications for automation
                       </li>
                     </ul>
-                    <div id="Pod-using-cmd" class="section-block">
+                    <div id="acr-using-cli" class="section-block">
                       <h4>ACR using Azure cli</h4>
                       <div class="code-block">
                         <pre><code class="language-git">az acr create \
@@ -407,7 +412,7 @@
                         After logging in you may want to <b>Push an Image</b> or
                         <b>Push the code</b> to build image usung ACR tasks
                       </p>
-                      <h5>Push image to ACR</h5>
+                      <h5 id="push-image-acr">Push image to ACR</h5>
                       <div class="code-block">
                         <h6>Get login server (URL or domain)</h6>
                         <pre><code class="language-git">az acr show \
@@ -430,7 +435,7 @@
                         <pre><code class="language-git">docker push &lt;login server>/&lt;image name>:&lt;tag></code></pre>
                       </div>
                       <!--//code-block-->
-                      <h5>Push Code to ACR</h5>
+                      <h5 id="push-code-acr">Push Code to ACR</h5>
                       <p>
                         push the code to build the image in ACR using ACR tasks
                       </p>
@@ -440,7 +445,7 @@
       --registry "&lt;ACR name>" \
       "&lt;path to Dockerfile>"</code></pre>
                       </div>
-                      <h5>List images in ACR</h5>
+                      <h5 id="acr-list-images">List images in ACR</h5>
                       <div class="code-block">
                         <pre><code class="language-git">az acr repository list --name "&lt;name of ACR>" --output table</code></pre>
                       </div>
@@ -454,35 +459,122 @@
                   <!--//section-block-->
                 </section>
                 <!--//doc-section-->
-                <section id="Job" class="doc-section">
-                  <h2 class="section-title">Job</h2>
+                <section id="ACI" class="doc-section">
+                  <h2 class="section-title">Azure Container Instances (ACI)</h2>
                   <div class="section-block">
                     <p>
-                      it is a resource of Azure that creates a pod that does a
-                      specific task and gets terminated.
+                      <a
+                        href="https://docs.microsoft.com/en-us/azure/container-instances/"
+                        target="_blank"
+                        >Link to official docs</a
+                      ><br />
+                      it is a resource that lets you run docker container
+                      serverlessly(without managing base Os).Azure Container
+                      Instances is a solution for any scenario that can operate
+                      in isolated containers, without orchestration.
                     </p>
+                    <h6>Important notes about ACI</h6>
+                    <ul>
+                      <li>ACR is a resource</li>
+                      <li>serverless container platform</li>
+                      <li>allows access applications via internet or vNet</li>
+                      <li>supports both windows and linux containers</li>
+                      <li>configuable resource size</li>
+                      <li>can presist dataif needed using azure files</li>
+                      <li>can be deployed in group</li>
+                      <li>has restart policy</li>
+                      <li>better for event driven architecture</li>
+                      <li>steps: create container</li>
+                    </ul>
                   </div>
-                  <!--//section-block-->
-                  <div id="html" class="section-block">
-                    <div class="code-block">
-                      <h6>Job basic template</h6>
-                      <pre><code class="language-markup">
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: &lt;job-name>
-spec:
-  template:
-    spec:
-      containers:
-      - name: &lt;container-name>
-        image: &lt;image>
-        command: ["echo",  "Hello world"]
-      restartPolicy: Never
-  backoffLimit: 4</code></pre>
+                </section>
+                <!--//section-block-->
+                <section id="app-service" class="doc-section">
+                  <h2 class="section-title">Azure App Service</h2>
+                  <div class="section-block">
+                    <p>
+                      <a
+                        href="https://docs.microsoft.com/en-us/azure/app-service/"
+                        target="_blank"
+                        >Link to official docs</a
+                      ><br />
+                      it is a resource that enables you to
+                      <b>build and host web apps</b>, mobile back ends, and
+                      RESTful APIs in the programming language of your choice
+                      without managing infrastructure.<b
+                        >Code to deploy comes from git or other systems</b
+                      >
+                    </p>
+                    <h6>Important notes about App Service</h6>
+                    <ul>
+                      <li>App Service is a resource</li>
+                      <li>web based hosting</li>
+                      <li>supports both windows and linux apps</li>
+                      <li>security, load balencing & automation</li>
+                      <li>cost depends on <b>App Service Plan</b></li>
+                      <li>steps: app service plan->create webapp</li>
+                    </ul>
+                    <p>There are two types of App Service plans</p>
+                    <ul>
+                      <li>Non isolated app service plan</li>
+                      <li>Isolated app service plan</li>
+                    </ul>
+                    <h5>Non isolated app service plan</h5>
+                    <ul>
+                      <li>Free and shared (F1, D1)</li>
+                    </ul>
+                    <h5>Isolated app service plans (ASE)</h5>
+                    <p>to consider when</p>
+                    <ul>
+                      <li>fully isolated environment for web app</li>
+                      <li>
+                        highly scalable & recomended for high memory utlization
+                        apps
+                      </li>
+                      <li>isolated & secure nettwork access</li>
+                      <li>fine control ofver network traffic</li>
+                      <li>can connect using VPN</li>
+                    </ul>
+                    <p>plans available :</p>
+                    <ul>
+                      <li>Basic (B1, B2, B3)</li>
+                      <li>
+                        Standard (S1, S2, S3)
+                        <b>Recomended for production</b>
+                      </li>
+                      <li>Premium v2(P1v2, P2v2, P3v2)</li>
+                      <li>Premium v3(P1v3, P2v3, P3v3)</li>
+                    </ul>
+                    <div id="html" class="section-block">
+                      <div id="app-service-plan" class="code-block">
+                        <h6>Create App Service Plan</h6>
+                        <pre><code class="language-git">az appservice plan create --name "%lt;plan name>" \
+                            --resource-group "&lt;name of rg>" \
+                            --sku s1 \
+                            --is-linux</code></pre>
+                      </div>
+                      <!--//code-block-->
+                      <div id="web-app" class="code-block">
+                        <h6>Create Web App</h6>
+                        <pre><code class="language-git">az webapp create -g "&lt;name of rg>" \
+                            -p "&lt;name of app service plan>" \
+                            -n "&lt;name of webapp>" \
+                            --runtime "node|10.14"</code></pre>
+                      </div>
+                      <!--//code-block-->
+                      <p>
+                        lastly you can deploy from various sources like
+                        local-git, github, Azure DevOps, etc<br />
+                        <a
+                          href="https://docs.microsoft.com/en-us/azure/developer/javascript/tutorial/tutorial-vscode-azure-cli-node/tutorial-vscode-azure-cli-node-04"
+                          target="_blank"
+                          >Link to deploy from local git repo</a
+                        >
+                      </p>
                     </div>
-                    <!--//code-block-->
+                    <!--//section-block-->
                   </div>
+
                   <!--//section-block-->
                 </section>
                 <!--//doc-section-->
@@ -1262,47 +1354,49 @@ rollingUpdate:
                     <a class="nav-link scrollto" href="#step4">Step Four</a>
                   </nav>
                   <!--//nav-->
-                  <a class="nav-link scrollto" href="#Pod">VM</a>
+                  <a class="nav-link scrollto" href="#RG">RG</a>
                   <nav class="doc-sub-menu nav flex-column">
-                    <a class="nav-link scrollto" href="#Pod-basic-template"
-                      >VM basic template</a
+                    <a class="nav-link scrollto" href="#rg-using-cli"
+                      >RG using cli</a
                     >
-                    <a class="nav-link scrollto" href="#Pod-using-cmd"
-                      >VM using azure cli</a
+                  </nav>
+                  <a class="nav-link scrollto" href="#VM">VM</a>
+                  <nav class="doc-sub-menu nav flex-column">
+                    <a class="nav-link scrollto" href="#vm-using-cli"
+                      >VM using cli</a
                     >
-                    <a class="nav-link scrollto" href="#Port-forward-pod"
-                      >Opening Port</a
+                    <a class="nav-link scrollto" href="#vm-open-port"
+                      >VM opening port</a
                     >
-                    <a class="nav-link scrollto" href="#List-pods"
-                      >List public ip</a
+                    <a class="nav-link scrollto" href="#vm-public-ip"
+                      >VM access public ip</a
                     >
                   </nav>
                   <!--//nav-->
-                  <a class="nav-link scrollto" href="#ReplicaSet">ReplicaSet</a>
+                  <a class="nav-link scrollto" href="#ACR">ACR</a>
                   <nav class="doc-sub-menu nav flex-column">
-                    <a class="nav-link scrollto" href="#RSet-basic-template"
-                      >RSet basic template</a
+                    <a class="nav-link scrollto" href="#acr-using-cli"
+                      >ACR using cli</a
                     >
-                    <a class="nav-link scrollto" href="#List-ReplicaSet"
-                      >List ReplicaSet</a
+                    <a class="nav-link scrollto" href="#push-image-acr"
+                      >Push image ACR</a
                     >
-                    <a class="nav-link scrollto" href="#Scale-ReplicaSet"
-                      >Scale ReplicaSet</a
+                    <a class="nav-link scrollto" href="#push-code-acr"
+                      >Push code ACR</a
                     >
-                    <a class="nav-link scrollto" href="#Delete-ReplicaSet"
-                      >Delete ReplicaSet</a
+                    <a class="nav-link scrollto" href="#acr-list-images"
+                      >List images ACR</a
                     >
                   </nav>
-                  <a class="nav-link scrollto" href="#Job">Job</a>
-                  <a class="nav-link scrollto" href="#Cron-Job">Cron Job</a>
-                  <a class="nav-link scrollto" href="#Service">Service</a>
+                  <a class="nav-link scrollto" href="#ACI">ACI</a>
+                  <a class="nav-link scrollto" href="#app-service"
+                    >Azure App Service</a
+                  >
                   <nav class="doc-sub-menu nav flex-column">
-                    <a class="nav-link scrollto" href="#Service-basic-template"
-                      >Service basic template</a
+                    <a class="nav-link scrollto" href="#app-service-plan"
+                      >app service plan cli</a
                     >
-                    <a class="nav-link scrollto" href="#Service-using-cmd"
-                      >Service using cmd</a
-                    >
+                    <a class="nav-link scrollto" href="#web-app">web app cli</a>
                   </nav>
                   <a class="nav-link scrollto" href="#Probes">Probes</a>
                   <nav class="doc-sub-menu nav flex-column">
