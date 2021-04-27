@@ -580,60 +580,207 @@
                   <!--//section-block-->
                 </section>
                 <!--//doc-section-->
-                <section id="Cron-Job" class="doc-section">
-                  <h2 class="section-title">Cron Job</h2>
+                <section id="azure-functions" class="doc-section">
+                  <h2 class="section-title">Azure Functions</h2>
                   <div class="section-block">
                     <p>
-                      it is a resource of Azure that creates a job that can
-                      repeat after certain time.
+                      <a
+                        href="https://docs.microsoft.com/en-us/azure/azure-functions/"
+                        target="_blank"
+                        >Link to official docs</a
+                      ><br />
+                      It is a serverless platform to run small peices of code.
+                      It can <b>auto scale</b> &you have to
+                      <b
+                        >pay only for the time yur code runs (consumption
+                        plan)</b
+                      >
                       <br />
-                      first it creats a job then a pod that does the specified
-                      work.
+                      one ting to note is that azure functions run on app
+                      service plan and we have the following plans :
                     </p>
+                    <ul>
+                      <li>consumption plan (5 min limit timeout)</li>
+                      <li>app service plan (Traditional pricing)</li>
+                      <li>
+                        premium plan (high speed, secuity, reserved instance)
+                      </li>
+                    </ul>
+                    <h6>Important notes about Azure Functions</h6>
+                    <ul>
+                      <li>Azure Functions is a resource</li>
+                      <li>run functions serverlessly</li>
+                      <li>auto scales</li>
+                      <li>cost depends on <b>App Service Plan</b></li>
+                      <li>
+                        steps: RG->app service plan->functions app(func
+                        init)->func new
+                      </li>
+                    </ul>
+                    <h3>Duable Functions</h3>
+                    <p>
+                      are azure one or mores fuctions chained together mostly
+                      used for serverless workflows (orcastrations).
+                    </p>
+                    <h4>Orchestration patterns</h4>
+                    <ul>
+                      <li>function chaining</li>
+                      <li>
+                        fan out- fan in , exectes activityfunctions in parallel
+                        and waits for them to end
+                      </li>
+                      <li>async http apis</li>
+                      <li>monitor</li>
+                      <li>human interaction</li>
+                    </ul>
+                    <h3>Azure functions App</h3>
+                    <p>
+                      is a resource used to group function in a single context
+                    </p>
+                    <h3>Development & workflow</h3>
+                    <p>
+                      you can write all the code manually but that is not a good
+                      choice, so we have mainly 2 ways to develop locally and
+                      then dpeoy.
+                    </p>
+                    <ul>
+                      <li>Visual studio</li>
+                      <li>Visual studio code with Azure core tools</li>
+                    </ul>
+                    <h4>Working with Azure Core Tools</h4>
+                    <p>
+                      Azure core tools is a cli application that helps to
+                      develop Azure functions locally and deploy to cloud by
+                      providing templates & easy commands for automation.
+                    </p>
+                    <h5>Create function project locally</h5>
+                    <ul>
+                      <li>
+                        create functions project
+                        <pre><code class="language-git">func init &lt;projectName></code></pre>
+                      </li>
+                      <li>
+                        create new function
+                        <pre><code class="language-git">func new</code></pre>
+                      </li>
+                      <li>
+                        start functions to test locally
+                        <pre><code class="language-git">func start</code></pre>
+                      </li>
+                      <li>
+                        deploy or publish to azure
+                        <pre><code class="language-git">func azure functionapp publish &lt;FunctionAppName></code></pre>
+                      </li>
+                    </ul>
                   </div>
-                  <!--//section-block-->
-                  <div id="html" class="section-block">
-                    <div class="code-block">
-                      <h6>Cron job basic template</h6>
-                      <pre><code class="language-markup">
-    apiVersion: batch/v1beta1
-    kind: CronJob
-    metadata:
-    name: &lt;cron job name>
-    spec:
-    schedule: "*/1 * * * *"
-    jobTemplate:   # job
-        spec:
-        template:  # pod template
-            spec:
-            containers:
-            - name: &lt;container-name>
-                image: &lt;image>
-                command: ["echo",  "Hello world"]
-            restartPolicy: OnFailure
-                                        </code></pre>
-                      <p>
-                        <b>Note :</b> here ***** reprisents minute | hour | day
-                        | month | year
-                      </p>
-                    </div>
-                    <!--//code-block-->
-                  </div>
-                  <!--//section-block-->
                 </section>
                 <!--//doc-section-->
                 <section id="Service" class="doc-section">
-                  <h2 class="section-title">Service</h2>
+                  <h2 class="section-title">Azure Cosmos DB</h2>
                   <div class="section-block">
                     <p>
-                      it is a resource of Azure that allows us to manage
-                      routing.<br />
-                      There are mainly 2 type of services
+                      <a
+                        href="https://docs.microsoft.com/en-us/azure/cosmos-db/"
+                        target="_blank"
+                        >Link to official docs</a
+                      ><br />
+                      It is a Fast <b>NoSQL</b> database with open APIs for any
+                      scale.
                     </p>
-                    <ol>
-                      <li>External-ip</li>
-                      <li>LoadBalancer</li>
-                    </ol>
+                    <h6>Important notes about Azure Csmos DB</h6>
+                    <ul>
+                      <li>Azure Cosmos DB is a resource</li>
+                      <li>provides low latency &lt; 10ms</li>
+                      <li>elastic scalabilty</li>
+                      <li>pricing for throughput</li>
+                      <li>builtin indexing</li>
+                      <li>
+                        steps: RG->cmos db account->database->container(Table,
+                        Graph or collection)-> items
+                      </li>
+                    </ul>
+                    <h3>APIs that Cosmos DB provides</h3>
+                    <p>
+                      Cosmos db provides with a wide rage of apis to intract
+                      with the database.You can chose which API on the basics of
+                      with which you are familier or some other tradeoffs.<br />
+                      Here are the APIs
+                    </p>
+                    <ul>
+                      <li>SQL <b>default</b></li>
+                      <li>Cassandra</li>
+                      <li>Mongo db</li>
+                      <li>Gremlin</li>
+                      <li>Azure Table</li>
+                    </ul>
+                    <p>
+                      Lets have a look on each and see, Why you should you
+                      <b>prefer a specific over other</b> APIs.
+                    </p>
+                    <h6>SQL</h6>
+                    <ul>
+                      <li>if you know SQL</li>
+                      <li>you want to store data as json documents</li>
+                      <li>if know other case fits choose SQL</li>
+                    </ul>
+                    <h6>Cassandra</h6>
+                    <ul>
+                      <li>if you know CQL</li>
+                      <li>easy to migrate cassandra based dbs to cloud.</li>
+                      <li>want to store data in wide coloumn format</li>
+                    </ul>
+                    <h6>Mongo db</h6>
+                    <ul>
+                      <li>if you know mongodb</li>
+                      <li>easy to migrate mogodbs to cloud.</li>
+                      <li>want to use json document store</li>
+                    </ul>
+                    <h6>Gremlin</h6>
+                    <ul>
+                      <li>need to store graph relations between data</li>
+                    </ul>
+                    <h6>Azure Table storage</h6>
+                    <ul>
+                      <li>if you know azure table storage</li>
+                      <li>part of azure storage</li>
+                      <li>easy to migrate azure table storage to Cosmos db.</li>
+                    </ul>
+                    <br />
+                    <h5>Selecting SDK</h5>
+                    <ul>
+                      <li>
+                        If using SQL API then use latest cosmosdb SDK for your
+                        platform
+                      </li>
+                      <li>
+                        If using cassandra, mongodb or gremin use current sdk
+                      </li>
+                      <li>If using Azure table api use current table sdks</li>
+                    </ul>
+                    <br />
+                    <h5>Consistancy Levels</h5>
+                    <ul>
+                      <li>
+                        <b>Strong :</b> gurantees that reads get the most recent
+                        version of an item
+                      </li>
+                      <li>
+                        <b>bounded staleness :</b> gurantees that reads has a
+                        max lag of (either version or time)
+                      </li>
+                      <li>
+                        <b>session consistency :</b> gurantees that clients
+                        sessio will reads its own writes.
+                      </li>
+                      <li>
+                        <b>consistent prefix consistancy :</b> gurantees that
+                        updates are returned in order.
+                      </li>
+                      <li>
+                        <b>Eventual Consistancy :</b> provides no gurantee for
+                        order.
+                      </li>
+                    </ul>
                   </div>
                   <!--//section-block-->
                   <div id="Service-basic-template" class="section-block">
@@ -670,27 +817,87 @@ spec:
                 </section>
                 <!--//doc-section-->
                 <section id="Probes" class="doc-section">
-                  <h2 class="section-title">Probes</h2>
+                  <h2 class="section-title">Azure Blob Storage</h2>
                   <div class="section-block">
                     <p>
-                      Probe means to inspect,probe checks our application again
-                      and again after specific period of time to check if it is
-                      working correctly.
-                      <br />link to official documentation of probes
                       <a
+                        href="https://docs.microsoft.com/en-us/azure/storage/blobs/"
                         target="_blank"
-                        href="https://Azure.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
-                        >link</a
-                      >
-                      <br />
-                      There are <b>2 types</b> of Probes
+                        >Link to official docs</a
+                      ><br />
+                      Azure Blob Storage is Microsoft's object storage solution
+                      for the cloud. Blob storage is optimized for storing
+                      massive amounts of <b>unstructured data</b>.
                     </p>
-                    <ol>
-                      <li>Liveness probe (re-starts the container if fails)</li>
+                    <h6>Important notes about Azure Blob Storage</h6>
+                    <ul>
+                      <li>It is an object storage for the cloud</li>
                       <li>
-                        Readiness probe (restricts access to container if fails)
+                        You can store unstructured data like text files(html,
+                        json, logs) binary files(images, videos, pdfs, virtial
+                        disks of vm)
                       </li>
-                    </ol>
+                      <li>accessabe via REST API over HTTP/HTTPS</li>
+                      <li>
+                        steps : RG->create storage account(globally unique
+                        name)-> create Blob containers->blobs(files)
+                      </li>
+                    </ul>
+                    <h5>Authorize access to blob storage</h5>
+                    <p>
+                      azure blob storage provides many ways to provide
+                      authorized access to objects, along with the different
+                      access levels <br />
+                    </p>
+                    <h6>Access levels</h6>
+                    <ul>
+                      <li>private (no read access without authorization)</li>
+                      <li>Blob (can't list blobs in container)</li>
+                      <li>Container (can list blobs in the container)</li>
+                    </ul>
+                    <h6>Authorization Types</h6>
+                    <ul>
+                      <li>shared key (storage account key)</li>
+                      <li>shared access signature (SAS token)</li>
+                      <li>Azure active directory</li>
+                      <li>Anonymous (public read access)</li>
+                    </ul>
+                    <h5>Blob Types</h5>
+                    <ul>
+                      <li>block blob (images , videos)</li>
+                      <li>append blob (log files)</li>
+                      <li>page blobs (virtual disks)</li>
+                    </ul>
+                    <h5>Replication and Redundancy</h5>
+                    <ul>
+                      <li>
+                        <b>LRS</b> : create 3 copies in the same zone (data
+                        center).
+                      </li>
+                      <li>
+                        <b>ZRS(not supported in all regions)</b> : creates 3
+                        copies in 3 different zones(data centers) in the same
+                        region.
+                      </li>
+                      <li>
+                        <b>GRS</b> : creates 3 copies in the same zone (data
+                        center) & 3 copies in a zone(data center) of secondary
+                        region.
+                      </li>
+                      <li>
+                        <b>GZRS</b> : creates 3 in 3 different zones(data
+                        centers) in primaery region & 3 copies in a zone(data
+                        center) of secondary region.
+                      </li>
+                      <li>
+                        <b>RA-GRS (default for Storage v2)</b>: same as GRS but
+                        you can read from secondary region.
+                      </li>
+                      <li>
+                        <b>RA-GZRS</b> : same as GZRS but you can read from
+                        secondary region.
+                      </li>
+                    </ul>
                   </div>
                   <!--//section-block-->
                   <ol>
